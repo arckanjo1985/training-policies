@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crônicas da Fortaleza Digital - A Torre de Vigilância</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+            color: #e5e7eb;
+        }
+        .main-footer { color: #9ca3af; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .lang-flag { cursor: pointer; height: 1.5rem; transition: all 0.2s; border: 2px solid transparent; border-radius: 4px; }
+        .lang-flag:not(.active) { opacity: 0.5; }
+        .lang-flag.active { opacity: 1; border-color: #60A5FA; }
+        .lang-flag:hover { opacity: 1; transform: scale(1.1); }
+        
+        tr.selected-row {
+            background-color: rgba(59, 130, 246, 0.2); /* blue-500/20 */
+        }
+        tr {
+            cursor: pointer;
+        }
+
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details .summary-icon { transition: transform 0.3s ease; }
+        details[open] .summary-icon { transform: rotate(135deg); }
+
+        #command-bar {
+            transition: all 0.3s ease-in-out;
+            transform: translateY(100%);
+        }
+        #command-bar.visible {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <!-- Header -->
+    <header class="bg-gray-800/80 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div>
+                 <a href="index.html" class="text-sm text-sky-400 hover:text-sky-300" data-lang="backToJourney">← Voltar para a Jornada</a>
+            </div>
+            <div id="language-switcher-flags" class="flex items-center space-x-2">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" title="Português" alt="Bandeira do Brasil" class="lang-flag active" data-lang-set="pt">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" title="English" alt="Bandeira dos EUA" class="lang-flag" data-lang-set="en">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" title="Español" alt="Bandeira da Espanha" class="lang-flag" data-lang-set="es">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Chapter Banner -->
+        <section class="relative h-[60vh] flex items-center justify-center text-center text-white p-4">
+             <div class="absolute inset-0 bg-black/60 z-10"></div>
+             <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_9aa7nu9aa7nu9aa7.png" class="absolute inset-0 w-full h-full object-cover" alt="Um guardião observando um orbe de cristal que mostra fluxos de dados">
+             <div class="relative z-20">
+                <h1 class="text-4xl md:text-6xl font-black" data-lang="chapter4Title" style="text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);">Capítulo 4: A Torre de Vigilância</h1>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-200" data-lang="chapter4Intro" style="text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);">
+                </p>
+             </div>
+        </section>
+
+        <!-- Section 1: The Orb of Analysis -->
+        <section class="py-16 sm:py-24">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <h2 class="text-3xl font-bold text-center text-sky-300 mb-4" data-lang="section1Title">O Orbe de Análise: A Primeira Vigília</h2>
+                
+                <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-8">
+                     <!-- Investigation Area -->
+                     <div class="mb-8 p-4 bg-gray-900/50 rounded-lg">
+                        <p class="text-gray-300 mb-4" data-lang="investigationPrompt">Use os filtros para explorar os registros do Orbe ou foque diretamente nos problemas.</p>
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <button id="find-alerts-btn" class="flex-1 bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-md transition" data-lang="btnFindAlerts">Analisar Alertas</button>
+                            <button id="reset-button" class="flex-1 bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" data-lang="filterReset">Limpar Filtros</button>
+                         </div>
+                     </div>
+                     
+                     <!-- Time Interval Note -->
+                     <div class="mb-8 p-4 bg-sky-900/20 border border-sky-700/50 rounded-lg text-sm">
+                        <p class="text-sky-200"><strong data-lang="cartographerNoteTitle">Nota do Mestre Cartógrafo:</strong> <span data-lang="cartographerNote">Lembre-se, nobre Guardião, que os registros no Orbe refletem o tempo desde que a Runa foi forjada. Este intervalo é a sua janela de oportunidade para descobrir fluxos inesperados e refinar as defesas antes que os portões sejam permanentemente selados.</span></p>
+                        <details class="mt-2">
+                            <summary class="font-semibold text-amber-300 cursor-pointer" data-lang="expertTitle">Visão do Mestre</summary>
+                            <p class="mt-2 text-gray-300" data-lang="expertTimeDesc">No nosso dialeto, este intervalo é o "Time-to-Review" (TTR). Um TTR curto minimiza a janela de exposição a um alerta não tratado, mas pode não capturar fluxos sazonais, como o pagamento de tributos mensais. Um TTR longo oferece mais dados, mas aumenta o risco. A maestria está em definir um TTR que equilibre a agilidade da resposta com a profundidade da análise, um padrão geralmente estabelecido pelo Conselho do Reino (governança).</p>
+                        </details>
+                     </div>
+
+                     <!-- Filters -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                        <div>
+                            <label for="port-filter" class="text-sm font-medium text-gray-400 block mb-1" data-lang="filterPort">Portal</label>
+                            <select id="port-filter" class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm p-2 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></select>
+                        </div>
+                        <div>
+                            <label for="source-filter" class="text-sm font-medium text-gray-400 block mb-1" data-lang="filterSource">Origem</label>
+                            <select id="source-filter" class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm p-2 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></select>
+                        </div>
+                         <div>
+                            <label for="dest-filter" class="text-sm font-medium text-gray-400 block mb-1" data-lang="filterDest">Destino</label>
+                            <select id="dest-filter" class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm p-2 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></select>
+                        </div>
+                        <div>
+                            <label for="action-filter" class="text-sm font-medium text-gray-400 block mb-1" data-lang="filterAction">Ação</label>
+                            <select id="action-filter" class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm p-2 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></select>
+                        </div>
+                    </div>
+                    <!-- Log Table -->
+                    <div class="overflow-x-auto rounded-lg h-96">
+                        <table class="min-w-full divide-y divide-gray-700">
+                            <thead class="bg-gray-800 sticky top-0">
+                                <tr>
+                                    <th class="py-3.5 px-4 text-left text-sm font-semibold text-white" data-lang="colSource">Origem</th>
+                                    <th class="py-3.5 px-4 text-left text-sm font-semibold text-white" data-lang="colDest">Destino</th>
+                                    <th class="py-3.5 px-4 text-left text-sm font-semibold text-white" data-lang="colPort">Portal</th>
+                                    <th class="py-3.5 px-4 text-left text-sm font-semibold text-white" data-lang="colAction">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="log-table-body" class="divide-y divide-gray-800"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Analysis Section -->
+                <div class="mt-12 bg-gray-800/50 border border-gray-700 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-center text-sky-300 mb-8" data-lang="analysisTitle">Gráficos Rúnicos</h2>
+                    <div id="charts-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Interpreting the Omens (Hidden by default) -->
+        <section id="council-section" class="hidden py-16 sm:py-24 bg-gray-900/50">
+            <div class="container mx-auto px-6 max-w-6xl text-center">
+                 <h2 class="text-3xl font-bold text-center text-sky-300 mb-4" data-lang="section2Title">Interpretando os Sussurros no Orbe</h2>
+                 <p class="text-lg text-gray-400 mx-auto max-w-3xl mb-12" data-lang="section2Desc">Sua análise foi precisa, Guardião. O Orbe revelou um fluxo não previsto. Agora, o Conselho se reúne para decidir o próximo passo.</p>
+                <div class="grid md:grid-cols-2 gap-8 items-center text-left bg-gray-800 border border-gray-700 rounded-xl p-8">
+                    <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_da6gnfda6gnfda6g.png" alt="Mapa de rede destacando o fluxo não autorizado" class="rounded-lg shadow-lg w-full">
+                    <div id="council-suggestion" class="space-y-4">
+                        <!-- Content will be injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: For Experts -->
+        <section class="py-16 sm:pt-4 sm:pb-24">
+             <div class="container mx-auto px-6 max-w-5xl">
+                <details class="bg-gray-800/30 border border-gray-700/50 rounded-lg">
+                    <summary class="p-6 flex justify-between items-center">
+                        <span class="font-bold text-xl text-amber-300" data-lang="expertTitle">A Scrying Pool: Prevendo o Próximo Ataque</span>
+                         <span class="summary-icon text-amber-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                         </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-300 space-y-4" style="background:rgba(0,0,0,0.2)">
+                       <p data-lang="expertDesc"></p>
+                       <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_l95gahl95gahl95g.png" alt="Dashboard avançado com gráficos e tabelas" class="rounded-lg shadow-md mt-4">
+                    </div>
+                </details>
+            </div>
+        </section>
+        
+        <!-- Final Navigation -->
+        <section class="py-16 text-center">
+            <a href="capitulo5.html" class="inline-block bg-sky-500 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-sky-600 transition-transform hover:scale-105" data-lang="nextChapter">Próximo Marco: Erguendo os Escudos →</a>
+        </section>
+
+    </main>
+    
+    <footer class="main-footer text-center p-6 text-sm relative z-10">
+        <p data-lang="footerCredit">Criado por Edson Sousa</p>
+    </footer>
+
+    <!-- Command Bar -->
+    <div id="command-bar" class="fixed bottom-0 left-0 right-0 bg-gray-800/90 backdrop-blur-md border-t border-gray-700 p-4 z-40">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-sm">
+                <span data-lang="selectedFlow">Fluxo Selecionado:</span>
+                <strong id="selected-flow-info" class="text-sky-300"></strong>
+            </div>
+            <div class="flex items-center gap-4">
+                 <select id="action-changer" class="bg-gray-700 border-gray-600 rounded-md p-2 text-white text-sm">
+                     <option value="Permitido" data-lang="actionPermitido">Permitido</option>
+                     <option value="Alerta" data-lang="actionAlerta">Alerta</option>
+                     <option value="Bloqueio Futuro" data-lang="actionBloqueio">Bloqueio Futuro</option>
+                 </select>
+                 <button id="ask-council-btn-2" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-md transition disabled:opacity-50" disabled data-lang="btnAskCouncil">Pedir Sugestão</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const translations = {
+            'pt': {
+                backToJourney: '← Voltar para a Jornada',
+                chapter4Title: 'Capítulo 4: A Torre de Vigilância',
+                chapter4Intro: 'As runas estão ativas no modo de alerta. As muralhas ainda não bloqueiam, mas cada tentativa de travessia não autorizada soa um alarme na Torre de Vigilância. Sua missão, nobre Guardião, é observar o fluxo de viajantes através do Orbe de Análise, separar os aliados dos potenciais inimigos e refinar nossas defesas antes de selarmos os portões.',
+                section1Title: 'O Orbe de Análise: A Primeira Vigília',
+                investigationPrompt: 'Selecione um registro na tabela para analisá-lo e tomar uma decisão.',
+                btnFindAlerts: 'Analisar Alertas',
+                btnAskCouncil: 'Pedir Sugestão ao Conselho',
+                cartographerNoteTitle: 'Nota do Mestre Cartógrafo:',
+                cartographerNote: 'Lembre-se, nobre Guardião, que os registros no Orbe refletem o tempo desde que a Runa foi forjada. Este intervalo é a sua janela de oportunidade para descobrir fluxos inesperados e refinar as defesas antes que os portões sejam permanentemente selados.',
+                expertTimeDesc: 'No nosso dialeto, este intervalo é o "Time-to-Review" (TTR). Um TTR curto minimiza a janela de exposição a um alerta não tratado, mas pode não capturar fluxos sazonais, como o pagamento de tributos mensais. Um TTR longo oferece mais dados, mas aumenta o risco. A maestria está em definir um TTR que equilibre a agilidade da resposta com a profundidade da análise, um padrão geralmente estabelecido pelo Conselho do Reino (governança).',
+                filterPort: 'Portal', filterSource: 'Origem', filterDest: 'Destino', filterAction: 'Ação', filterReset: 'Limpar Filtros',
+                colSource: 'Origem', colDest: 'Destino', colPort: 'Portal', colAction: 'Ação',
+                analysisTitle: 'Gráficos Rúnicos',
+                chart1Title: 'Portais Mais Ativos', chart2Title: 'Origens Mais Ativas', chart3Title: 'Destinos Mais Procurados', chart4Title: 'Registro de Ações',
+                section2Title: 'Interpretando os Sussurros no Orbe',
+                section2Desc: 'Sua análise foi precisa, Guardião. O Orbe revelou um fluxo não previsto. Agora, o Conselho se reúne para decidir o próximo passo.',
+                councilTitle: 'Sugestões do Conselho',
+                councilDesc: 'O fluxo de {source} para {destination} no portal {port} está atualmente gerando um alerta. O Conselho sugere refinar a Runa, adicionando uma cláusula que permita este comércio específico. Deseja aceitar esta emenda?',
+                btnAccept: 'Aceitar Sugestão', btnIgnore: 'Ignorar Presságio',
+                btnRevert: 'Revisar Decisão',
+                councilAccept: '<strong>Decisão Registrada:</strong> A Runa da Tesouraria foi aprimorada. O tráfego agora é <strong>Permitido</strong>.',
+                councilIgnore: '<strong>Decisão Registrada:</strong> O presságio foi ignorado. O fluxo agora está marcado para <strong>Bloqueio Futuro</strong>.',
+                expertTitle: 'A Scrying Pool: Prevendo o Próximo Ataque',
+                expertDesc: 'Um Mestre Guardião não se contenta em apenas reagir aos alertas. Ele exporta os dados do Orbe para ferramentas mais poderosas para fazer perguntas mais profundas: "Quais cidadelas estão recebendo o maior número de sondagens? Há um aumento lento e suspeito de tráfego em um portal que, embora permitido, é incomum?". A verdadeira maestria está em usar a análise de dados para prever e neutralizar a próxima ameaça, em vez de apenas responder à atual.',
+                nextChapter: 'Próximo Marco: Erguendo os Escudos →',
+                footerCredit: 'Criado por Edson Sousa',
+                selectedFlow: 'Fluxo Selecionado:',
+                actionPermitido: 'Permitido',
+                actionAlerta: 'Alerta',
+                actionBloqueio: 'Bloqueio Futuro'
+            },
+            'en': {
+                backToJourney: '← Back to the Journey',
+                chapter4Title: 'Chapter 4: The Watchtower',
+                chapter4Intro: 'The runes are active in alert mode. The walls do not yet block, but every unauthorized crossing attempt sounds an alarm in the Watchtower. Your mission, noble Guardian, is to observe the flow of travelers through the Orb of Analysis, separate allies from potential enemies, and refine our defenses before we seal the gates.',
+                section1Title: 'The Orb of Analysis: The First Watch',
+                investigationPrompt: 'Select a record in the table to analyze it and make a decision.',
+                btnFindAlerts: 'Analyze Alerts',
+                btnAskCouncil: 'Ask Council for Suggestion',
+                cartographerNoteTitle: 'Master Cartographer\'s Note:',
+                cartographerNote: 'Remember, noble Guardian, that the records in the Orb reflect the time since the Rune was forged. This interval is your window of opportunity to discover unexpected flows and refine the defenses before the gates are permanently sealed.',
+                expertTimeDesc: 'In our dialect, this interval is the "Time-to-Review" (TTR). A short TTR minimizes the exposure window to an unhandled alert but may not capture seasonal flows, like monthly tribute payments. A long TTR offers more data but increases the risk. Mastery lies in defining a TTR that balances response agility with analytical depth, a standard usually set by the Kingdom\'s Council (governance).',
+                filterPort: 'Portal', filterSource: 'Source', filterDest: 'Destination', filterAction: 'Action', filterReset: 'Clear Filters',
+                colSource: 'Source', colDest: 'Destination', colPort: 'Portal', colAction: 'Action',
+                analysisTitle: 'Runic Charts',
+                chart1Title: 'Most Active Portals', chart2Title: 'Most Active Sources', chart3Title: 'Most Sought-After Destinations', chart4Title: 'Action Log',
+                section2Title: 'Interpreting the Whispers in the Orb',
+                section2Desc: 'Your analysis was precise, Guardian. The Orb has revealed an unforeseen flow. Now, the Council gathers to decide the next step.',
+                councilTitle: 'Council Suggestions',
+                councilDesc: 'The flow from {source} to {destination} on portal {port} is currently generating an alert. The Council suggests refining the Rune, adding a clause to allow this specific trade. Do you wish to accept this amendment?',
+                btnAccept: 'Accept Suggestion', btnIgnore: 'Ignore Omen',
+                btnRevert: 'Reconsider Decision',
+                councilAccept: '<strong>Decision Logged:</strong> The Treasury Rune has been enhanced. The traffic is now <strong>Allowed</strong>.',
+                councilIgnore: '<strong>Decision Logged:</strong> The omen was ignored. The flow is now marked for <strong>Future Block</strong>.',
+                expertTitle: 'The Scrying Pool: Predicting the Next Attack',
+                expertDesc: 'A Master Guardian is not content with merely reacting to alerts. They export the data from the Orb to more powerful tools to ask deeper questions: "Which citadels are receiving the most probes? Is there a slow, suspicious increase in traffic on a portal that, although permitted, is unusual?". True mastery lies in using data analysis to predict and neutralize the next threat, rather than just responding to the current one.',
+                nextChapter: 'Next Milestone: Raising the Shields →',
+                footerCredit: 'Created by Edson Sousa',
+                selectedFlow: 'Selected Flow:',
+                actionPermitido: 'Allowed',
+                actionAlerta: 'Alert',
+                actionBloqueio: 'Future Block'
+            },
+            'es': {
+                backToJourney: '← Volver a la Jornada',
+                chapter4Title: 'Capítulo 4: La Torre de Vigilancia',
+                chapter4Intro: 'Las runas están activas en modo de alerta. Las murallas aún no bloquean, pero cada intento de cruce no autorizado hace sonar una alarma en la Torre de Vigilancia. Tu misión, noble Guardián, es observar el flujo de viajeros a través del Orbe de Análisis, separar a los aliados de los posibles enemigos y refinar nuestras defensas antes de que sellemos las puertas.',
+                section1Title: 'El Orbe de Análisis: La Primera Vigilia',
+                investigationPrompt: 'Selecciona un registro en la tabla para analizarlo y tomar una decisión.',
+                btnFindAlerts: 'Analizar Alertas',
+                btnAskCouncil: 'Pedir Sugerencia al Consejo',
+                cartographerNoteTitle: 'Nota del Maestro Cartógrafo:',
+                cartographerNote: 'Recuerda, noble Guardián, que los registros en el Orbe reflejan el tiempo desde que se forjó la Runa. Este intervalo es tu ventana de oportunidad para descubrir flujos inesperados y refinar las defensas antes de que las puertas se sellen permanentemente.',
+                expertTimeDesc: 'En nuestro dialecto, este intervalo es el "Time-to-Review" (TTR). Un TTR corto minimiza la ventana de exposición a una alerta no gestionada, pero puede no capturar flujos estacionales, como el pago de tributos mensuales. Un TTR largo ofrece más datos, pero aumenta el riesgo. La maestría reside en definir un TTR que equilibre la agilidad de la respuesta con la profundidad del análisis, un estándar generalmente establecido por el Consejo del Reino (gobernanza).',
+                filterPort: 'Portal', filterSource: 'Origen', filterDest: 'Destino', filterAction: 'Acción', filterReset: 'Limpiar Filtros',
+                colSource: 'Origen', colDest: 'Destino', colPort: 'Portal', colAction: 'Acción',
+                analysisTitle: 'Gráficos Rúnicos',
+                chart1Title: 'Portales Más Activos', chart2Title: 'Orígenes Más Activos', chart3Title: 'Destinos Más Buscados', chart4Title: 'Registro de Acciones',
+                section2Title: 'Interpretando los Susurros en el Orbe',
+                section2Desc: 'Tu análisis fue preciso, Guardián. El Orbe ha revelado un flujo imprevisto. Ahora, el Consejo se reúne para decidir el siguiente paso.',
+                councilTitle: 'Sugerencias del Consejo',
+                councilDesc: 'El flujo de {source} a {destination} en el portal {port} está generando actualmente una alerta. El Consejo sugiere refinar la Runa, añadiendo una cláusula para permitir este comercio específico. ¿Deseas aceptar esta enmienda?',
+                btnAccept: 'Aceptar Sugerencia', btnIgnore: 'Ignorar Presagio',
+                btnRevert: 'Reconsiderar Decisión',
+                councilAccept: '<strong>Decisión Registrada:</strong> La Runa de la Tesorería ha sido mejorada. El tráfico ahora está <strong>Permitido</strong>.',
+                councilIgnore: '<strong>Decisión Registrada:</strong> El presagio fue ignorado. El flujo ahora está marcado para <strong>Bloqueo Futuro</strong>.',
+                expertTitle: 'La Piscina de Adivinación: Prediciendo el Próximo Ataque',
+                expertDesc: 'Un Maestro Guardián no se contenta con solo reaccionar a las alertas. Exporta los datos del Orbe a herramientas más potentes para hacer preguntas más profundas: "¿Qué ciudadelas están recibiendo la mayor cantidad de sondeos? ¿Hay un aumento lento y sospechoso de tráfico en un portal que, aunque permitido, es inusual?". La verdadera maestría reside en usar el análisis de datos para predecir y neutralizar la próxima amenaza, en lugar de solo responder a la actual.',
+                nextChapter: 'Siguiente Hito: Levantando los Escudos →',
+                footerCredit: 'Creado por Edson Sousa',
+                selectedFlow: 'Flujo Seleccionado:',
+                actionPermitido: 'Permitido',
+                actionAlerta: 'Alerta',
+                actionBloqueio: 'Bloqueo Futuro'
+            },
+        };
+
+        let currentLang = 'pt';
+        let logData = [];
+        let selectedLogId = null;
+        
+        const portFilter = document.getElementById('port-filter');
+        const sourceFilter = document.getElementById('source-filter');
+        const destFilter = document.getElementById('dest-filter');
+        const actionFilter = document.getElementById('action-filter');
+        const tableBody = document.getElementById('log-table-body');
+        const councilSection = document.getElementById('council-section');
+        const councilSuggestion = document.getElementById('council-suggestion');
+        const chartsContent = document.getElementById('charts-content');
+        const askCouncilBtn = document.getElementById('ask-council-btn-2');
+        const commandBar = document.getElementById('command-bar');
+        const actionChanger = document.getElementById('action-changer');
+
+        function generateLogData() {
+            const sources = ['Guilda dos Mercadores', 'Torre dos Magos', 'Posto Avançado', 'Biblioteca Real', 'Vila dos Ferreiros', 'Terras Distantes', 'Conselho dos Anciões'];
+            const destinations = ['Tesouraria Real', 'Oráculo DNS', 'Armazém de Suprimentos', 'Arsenal', 'Arquivo Arcano'];
+            const commonPorts = [80, 443, 53, 1433, 8080, 25];
+            const vulnerablePorts = [22, 3389, 445, 139, 5900];
+            let data = [];
+            for (let i = 0; i < 1000; i++) {
+                const source = sources[Math.floor(Math.random() * sources.length)];
+                let action = (Math.random() < 0.2) ? 'Alerta' : 'Permitido';
+                data.push({ id: `log-${i}`, source, destination: destinations[Math.floor(Math.random() * destinations.length)], port: Math.random() < 0.1 ? vulnerablePorts[Math.floor(Math.random() * vulnerablePorts.length)] : commonPorts[Math.floor(Math.random() * commonPorts.length)], action });
+            }
+            return data;
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            const tr = translations[currentLang] || translations['pt'];
+            if (!tr) return; 
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (tr[key]) el.innerHTML = tr[key];
+            });
+            document.querySelectorAll('.lang-flag').forEach(flag => {
+                flag.classList.toggle('active', flag.getAttribute('data-lang-set') === lang);
+                flag.classList.toggle('opacity-50', flag.getAttribute('data-lang-set') !== lang);
+            })
+            renderAnalysis(getFilteredData());
+        }
+        
+        function populateFilters(data) {
+            const createOptions = (arr) => [...new Set(arr)].sort((a,b) => String(a).localeCompare(String(b))).map(item => `<option value="${item}">${item}</option>`).join('');
+            portFilter.innerHTML = '<option value="">Todos</option>' + createOptions(data.map(i => i.port));
+            sourceFilter.innerHTML = '<option value="">Todas</option>' + createOptions(data.map(i => i.source));
+            destFilter.innerHTML = '<option value="">Todos</option>' + createOptions(data.map(i => i.destination));
+            actionFilter.innerHTML = '<option value="">Todas</option>' + createOptions(data.map(i => i.action));
+        }
+
+        function renderTable(data) {
+            tableBody.innerHTML = '';
+            data.forEach(item => {
+                let rowClass = item.id === selectedLogId ? 'selected-row' : '';
+                let actionClass = '';
+                switch(item.action) {
+                    case 'Alerta': actionClass = 'bg-red-500/20 text-red-400'; break;
+                    case 'Permitido': actionClass = 'bg-green-500/20 text-green-400'; break;
+                    case 'Bloqueio Futuro': actionClass = 'bg-purple-500/20 text-purple-400'; break;
+                }
+                const row = document.createElement('tr');
+                row.className = `${rowClass} transition-colors duration-200`;
+                row.id = `row-${item.id}`;
+                row.onclick = () => handleRowSelection(item.id);
+                row.innerHTML = `
+                        <td class="p-4 text-sm">${item.source}</td>
+                        <td class="p-4 text-sm">${item.destination}</td>
+                        <td class="p-4 text-sm">${item.port}</td>
+                        <td class="p-4 text-sm">
+                             <span class="px-2 py-1 font-semibold leading-tight rounded-full ${actionClass}">
+                                ${item.action}
+                            </span>
+                        </td>`;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        function getFilteredData() {
+            return logData.filter(item => 
+                (!portFilter.value || item.port == portFilter.value) && 
+                (!sourceFilter.value || item.source === sourceFilter.value) &&
+                (!destFilter.value || item.destination === destFilter.value) &&
+                (!actionFilter.value || item.action === actionFilter.value)
+            );
+        }
+
+        function applyFilters() {
+            const filteredData = getFilteredData();
+            renderTable(filteredData);
+            renderAnalysis(filteredData);
+            councilSection.classList.add('hidden');
+             if (!filteredData.find(d => d.id === selectedLogId)) {
+                handleRowSelection(null);
+            }
+        }
+        
+        function handleRowSelection(logId) {
+             selectedLogId = logId;
+             const selectedLog = logData.find(item => item.id === logId);
+
+             document.querySelectorAll('#log-table-body tr').forEach(row => {
+                 row.classList.remove('selected-row');
+             });
+
+             if(selectedLog) {
+                 document.getElementById(`row-${logId}`).classList.add('selected-row');
+                 document.getElementById('selected-flow-info').textContent = `${selectedLog.source} → ${selectedLog.destination}:${selectedLog.port}`;
+                 actionChanger.value = selectedLog.action;
+                 commandBar.classList.add('visible');
+                 askCouncilBtn.disabled = selectedLog.action !== 'Alerta';
+             } else {
+                 commandBar.classList.remove('visible');
+                 selectedLogId = null;
+             }
+             councilSection.classList.add('hidden');
+        }
+        
+        function renderCouncilSuggestion() {
+             const item = logData.find(log => log.id === selectedLogId);
+             if (!item) return;
+
+             const tr = translations[currentLang] || translations['pt'];
+             let description = tr.councilDesc
+                .replace('{source}', `<strong>${item.source}</strong>`)
+                .replace('{destination}', `<strong>${item.destination}</strong>`)
+                .replace('{port}', `<strong>${item.port}</strong>`);
+
+             councilSuggestion.innerHTML = `
+                <h3 class="text-xl font-bold text-white" data-lang="councilTitle">${tr.councilTitle}</h3>
+                <p class="text-gray-300">${description}</p>
+                <div class="flex space-x-4 pt-4">
+                    <button onclick="handleCouncilDecision(true)" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition" data-lang="btnAccept">${tr.btnAccept}</button>
+                    <button onclick="handleCouncilDecision(false)" class="flex-1 bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 rounded-lg transition" data-lang="btnIgnore">${tr.btnIgnore}</button>
+                </div>`;
+        }
+
+
+        function handleCouncilDecision(accepted) {
+            const tr = translations[currentLang] || translations['pt'];
+            const message = accepted ? tr.councilAccept : tr.councilIgnore;
+            const colorClass = accepted ? 'text-green-400' : 'text-red-400';
+            const newAction = accepted ? 'Permitido' : 'Bloqueio Futuro';
+
+            changeLogStatus(newAction);
+            
+            councilSuggestion.innerHTML = `
+                <p class="${colorClass} p-4 bg-gray-900/50 rounded-lg">${message}</p>
+                <button onclick="revertCouncilDecision()" class="w-full mt-4 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-md transition" data-lang="btnRevert">${tr.btnRevert || 'Revisar Decisão'}</button>
+            `;
+        }
+        
+        window.revertCouncilDecision = function() {
+             const log = logData.find(item => item.id === selectedLogId);
+             if (log) {
+                log.action = 'Alerta';
+                applyFilters();
+                renderCouncilSuggestion();
+             }
+        }
+
+        function changeLogStatus(newStatus) {
+            const logIndex = logData.findIndex(item => item.id === selectedLogId);
+            if(logIndex > -1) {
+                logData[logIndex].action = newStatus;
+                populateFilters(logData);
+                applyFilters();
+            }
+        }
+        
+        function renderAnalysis(data) { renderCharts(data); }
+
+        function renderCharts(data) {
+            const tr = translations[currentLang] || translations['pt'];
+            const createChartHTML = (title, counts) => {
+                const total = Object.values(counts).reduce((s,c) => s+c, 0);
+                if (total === 0) return `<div class="mb-8"><h4 class="font-bold text-lg mb-4">${title}</h4><p class="text-gray-400">Sem dados para exibir.</p></div>`;
+                let itemsHTML = Object.entries(counts).sort(([,a],[,b]) => b-a).slice(0,5).map(([key, value]) => {
+                    const percentage = (value / total * 100).toFixed(1);
+                    return `<div class="flex items-center text-sm mb-2"><div class="w-1/3 truncate pr-2" title="${key}">${key}</div><div class="w-2/3 bg-gray-700 rounded-full h-4"><div class="bg-sky-500 h-4 rounded-full text-xs text-white text-right pr-2 flex items-center justify-end" style="width: ${percentage}%"><span>${percentage}%</span></div></div></div>`;
+                }).join('');
+                return `<div class="mb-8"><h4 class="font-bold text-lg mb-4">${title}</h4>${itemsHTML}</div>`;
+            };
+            const portCounts = data.reduce((acc, {port}) => (acc[port] = (acc[port] || 0) + 1, acc), {});
+            const sourceCounts = data.reduce((acc, {source}) => (acc[source] = (acc[source] || 0) + 1, acc), {});
+            const destCounts = data.reduce((acc, {destination}) => (acc[destination] = (acc[destination] || 0) + 1, acc), {});
+            const actionCounts = data.reduce((acc, {action}) => (acc[action] = (acc[action] || 0) + 1, acc), {});
+            
+            chartsContent.innerHTML = `<div class="grid md:grid-cols-2 gap-x-12 gap-y-8">${createChartHTML(tr.chart1Title, portCounts)}${createChartHTML(tr.chart2Title, sourceCounts)}${createChartHTML(tr.chart3Title, destCounts)}${createChartHTML(tr.chart4Title, actionCounts)}</div>`;
+        }
+
+        // --- Event Listeners ---
+        document.querySelectorAll('.lang-flag').forEach(flag => {
+            flag.addEventListener('click', (e) => setLanguage(e.target.getAttribute('data-lang-set')))
+        });
+        document.getElementById('reset-button').addEventListener('click', () => {
+             ['port-filter', 'source-filter', 'dest-filter', 'action-filter'].forEach(id => document.getElementById(id).value = '');
+             applyFilters();
+        });
+        ['port-filter', 'source-filter', 'dest-filter', 'action-filter'].forEach(id => {
+            document.getElementById(id).addEventListener('change', applyFilters);
+        });
+        document.getElementById('find-alerts-btn').addEventListener('click', () => {
+            actionFilter.value = 'Alerta';
+            applyFilters();
+        });
+        askCouncilBtn.addEventListener('click', () => {
+            const selectedLog = logData.find(item => item.id === selectedLogId);
+            if (selectedLog && selectedLog.action === 'Alerta') {
+                councilSection.classList.remove('hidden');
+                setTimeout(() => window.scrollTo({ top: councilSection.offsetTop, behavior: 'smooth' }), 100);
+                renderCouncilSuggestion();
+            }
+        });
+        actionChanger.addEventListener('change', (e) => {
+            changeLogStatus(e.target.value);
+        });
+
+        // --- Initial setup ---
+        logData = generateLogData();
+        populateFilters(logData);
+        applyFilters();
+        setLanguage('pt');
+    </script>
+</body>
+</html>

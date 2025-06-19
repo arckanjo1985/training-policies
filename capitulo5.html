@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crônicas da Fortaleza Digital - Erguendo os Escudos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+            color: #e5e7eb;
+        }
+        .main-footer { color: #9ca3af; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .lang-flag { cursor: pointer; height: 1.5rem; transition: all 0.2s; border: 2px solid transparent; border-radius: 4px; }
+        .lang-flag:not(.active) { opacity: 0.5; }
+        .lang-flag.active { opacity: 1; border-color: #60A5FA; }
+        .lang-flag:hover { opacity: 1; transform: scale(1.1); }
+        
+        /* Tooltip Styles */
+        .tooltip-container { position: relative; display: inline-block; }
+        .tooltip-icon { cursor: pointer; }
+        .tooltip-text {
+            visibility: hidden; width: 240px; background-color: #1f2937; color: #fff; text-align: center;
+            border-radius: 6px; padding: 8px; position: absolute; z-index: 10; bottom: 125%; left: 50%;
+            margin-left: -120px; opacity: 0; transition: opacity 0.3s; border: 1px solid #4b5563;
+        }
+        .tooltip-text::after {
+            content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px;
+            border-width: 5px; border-style: solid; border-color: #4b5563 transparent transparent transparent;
+        }
+        .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+        /* Accordion Styles */
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details .summary-icon { transition: transform 0.3s ease; }
+        details[open] .summary-icon { transform: rotate(135deg); }
+        
+        /* Activation Button Style */
+        #activate-shield-btn:disabled {
+            background-color: #4b5563; /* gray-600 */
+            cursor: not-allowed;
+        }
+        
+        /* Shield animation effect */
+        .shield-effect {
+            animation: shield-up 1s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes shield-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <!-- Header -->
+    <header class="bg-gray-800/80 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div>
+                 <a href="index.html" class="text-sm text-sky-400 hover:text-sky-300" data-lang="backToJourney">← Voltar para a Jornada</a>
+            </div>
+            <div id="language-switcher-flags" class="flex items-center space-x-2">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" title="Português" alt="Bandeira do Brasil" class="lang-flag active" data-lang-set="pt">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" title="English" alt="Bandeira dos EUA" class="lang-flag" data-lang-set="en">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" title="Español" alt="Bandeira da Espanha" class="lang-flag" data-lang-set="es">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Chapter Banner -->
+        <section class="relative h-[60vh] flex items-center justify-center text-center text-white p-4">
+             <div class="absolute inset-0 bg-black/60 z-10"></div>
+             <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_l95gahl95gahl95g.png" class="absolute inset-0 w-full h-full object-cover" alt="Um domo de energia azul protegendo uma fortaleza de ataques">
+             <div class="relative z-20">
+                <h1 class="text-4xl md:text-6xl font-black" data-lang="chapter5Title" style="text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);">Capítulo 5: Erguendo os Escudos</h1>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-200" data-lang="chapter5Intro" style="text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);"></p>
+             </div>
+        </section>
+
+        <!-- Section 1: The Verdict Chamber -->
+        <section class="py-16 sm:py-24">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-3xl font-bold text-center text-sky-300 mb-12" data-lang="section1Title">A Câmara do Veredito Final</h2>
+                
+                <div id="altar-of-command" class="bg-gray-800/50 border border-gray-700 rounded-xl p-8 space-y-8">
+                    <!-- Fortress State -->
+                    <div class="text-center p-6 bg-gray-900/50 rounded-lg">
+                        <h3 class="text-xl font-bold text-white mb-4" data-lang="stateTitle">O Estado da Fortaleza
+                             <span class="tooltip-container ml-2">
+                                <span class="tooltip-icon text-gray-400">(?)</span>
+                                <span class="tooltip-text" data-lang="stateTooltip">Este painel reflete o "Estado de Prontidão" antes da janela de mudança. Todos os alertas devem ser zero ou justificados no plano.</span>
+                            </span>
+                        </h3>
+                        <div class="flex justify-around">
+                            <div>
+                                <p class="text-4xl font-bold text-red-400">2</p>
+                                <p class="text-sm text-gray-400" data-lang="stateAlerts">Alertas Pendentes</p>
+                            </div>
+                            <div>
+                                <p class="text-4xl font-bold text-green-400">18</p>
+                                <p class="text-sm text-gray-400" data-lang="stateReviewed">Fluxos Analisados</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Final Checklist -->
+                    <div id="final-checklist">
+                        <h3 class="text-xl font-bold text-white mb-4" data-lang="checklistTitle">A Última Verificação</h3>
+                        <div class="space-y-4">
+                            <label class="flex items-center"><input type="checkbox" class="checklist-item h-5 w-5 rounded-md bg-gray-600 text-sky-500 focus:ring-sky-500"><span class="ml-3" data-lang="check1">As violações foram revistas</span>
+                                <span class="tooltip-container ml-2">
+                                    <span class="tooltip-icon text-gray-400">(?)</span>
+                                    <span class="tooltip-text" data-lang="check1Tooltip">Significa que cada 'Alerta' do Capítulo 4 foi analisado e classificado. Nenhum tráfego desconhecido será bloqueado por acidente.</span>
+                                </span>
+                            </label>
+                             <label class="flex items-center"><input type="checkbox" class="checklist-item h-5 w-5 rounded-md bg-gray-600 text-sky-500 focus:ring-sky-500"><span class="ml-3" data-lang="check2">Os Guardiões de Pedra estão no modo de execução</span>
+                                <span class="tooltip-container ml-2">
+                                    <span class="tooltip-icon text-gray-400">(?)</span>
+                                    <span class="tooltip-text" data-lang="check2Tooltip">Verificamos que todas as nossas sentinelas estão online e prontas para aplicar as leis, sem bandeiras de erro ou corrupção.</span>
+                                </span>
+                            </label>
+                             <label class="flex items-center"><input type="checkbox" class="checklist-item h-5 w-5 rounded-md bg-gray-600 text-sky-500 focus:ring-sky-500"><span class="ml-3" data-lang="check3">A comitiva aprova a ativação</span>
+                                <span class="tooltip-container ml-2">
+                                    <span class="tooltip-icon text-gray-400">(?)</span>
+                                    <span class="tooltip-text" data-lang="check3Tooltip">O Arquiteto, a Guardiã, o Engenheiro e o Lorde do Ativo deram sua bênção final. A comunicação e a aprovação formal são a chave para uma mudança sem caos.</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Activation Button -->
+                    <div id="activation-div" class="text-center pt-6 tooltip-container">
+                        <button id="activate-shield-btn" class="w-full md:w-auto bg-green-600 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-green-700 transition" disabled data-lang="activateButton">Ativar o Grande Escudo</button>
+                        <span id="activation-tooltip" class="tooltip-text hidden" data-lang="activateTooltip">Conclua a verificação para ativar o escudo.</span>
+                    </div>
+
+                    <!-- Consequence -->
+                    <div id="consequence-div" class="hidden text-center p-6 bg-green-900/30 border border-green-500 rounded-lg">
+                        <h3 class="text-2xl font-bold text-green-300" data-lang="consequenceTitle">Status: Protegido e Sob Vigilância Ativa</h3>
+                        <p class="mt-2 text-gray-300" data-lang="consequenceDesc">O Grande Escudo está erguido. As fronteiras estão seladas. A fortaleza agora repele ativamente as ameaças conhecidas e desconhecidas. Mas o trabalho não termina; ele apenas muda de natureza. A Vigília Eterna começou.</p>
+                        <button id="reset-altar-btn" class="mt-6 bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-md transition" data-lang="resetAltarButton">Refazer o Ritual</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: For Experts -->
+        <section class="py-16 sm:pt-4 sm:pb-24">
+             <div class="container mx-auto px-6 max-w-5xl">
+                <details class="bg-gray-800/30 border border-gray-700/50 rounded-lg">
+                    <summary class="p-6 flex justify-between items-center">
+                        <span class="font-bold text-xl text-amber-300" data-lang="expertTitle">O Ritual de Ativação: Táticas de Um Mestre</span>
+                         <span class="summary-icon text-amber-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                         </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-300 space-y-6" style="background:rgba(0,0,0,0.2)">
+                       <div><strong class="text-amber-300" data-lang="expert1Title">Plano de Reversão (Rollback):</strong> <span data-lang="expert1Desc">Todo Mestre Artífice sabe que mesmo a runa mais perfeita pode ter uma consequência inesperada. É crucial ter um 'feitiço de reversão' pronto: um script ou processo para reverter a política para o 'Modo de Alerta' em menos de 5 minutos. Este plano deve ser documentado e aprovado pelo Conselho (CAB) antes mesmo da janela de ativação.</span></div>
+                       <div><strong class="text-amber-300" data-lang="expert2Title">Implementação em Fases (Phased Rollout):</strong> <span data-lang="expert2Desc">Nunca erga os muros de todo o reino de uma só vez. A sabedoria está em começar pelas cidadelas menos críticas. Dentro do reino de produção, ative o escudo em uma única torre (servidor) primeiro. Monitore. Se tudo estiver estável, expanda para a muralha inteira. Esta tática minimiza o raio de impacto de qualquer anomalia.</span></div>
+                       <div><strong class="text-amber-300" data-lang="expert3Title">Vigilância Intensificada (Hypercare):</strong> <span data-lang="expert3Desc">Após erguer o escudo, a comitiva não descansa. Uma 'Ponte de Guerra' (war room) é aberta com todos os membros do Conselho. As métricas de performance, o fluxo de comércio e os contadores de bloqueio são observados obsessivamente nas primeiras horas. Qualquer cidadão (usuário) que relatar um problema tem sua chamada priorizada.</span></div>
+                       <div><strong class="text-amber-300" data-lang="expert4Title">A Nova Normalidade (Monitoramento Contínuo):</strong> <span data-lang="expert4Desc">A segurança não é um projeto com um fim; é um programa de vigilância eterna. O trabalho muda de 'construção' para 'manutenção': revisar regras, proteger novas cidadelas (onboarding) e manter a documentação das runas sempre atualizada.</span></div>
+                    </div>
+                </details>
+            </div>
+        </section>
+        
+        <!-- Final Navigation -->
+        <section class="py-16 text-center">
+            <a href="index.html" class="inline-block bg-sky-500 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-sky-600 transition-transform hover:scale-105" data-lang="nextChapter">Concluir a Jornada e Ler o Epílogo →</a>
+        </section>
+
+    </main>
+    
+    <footer class="main-footer text-center p-6 text-sm relative z-10">
+        <p data-lang="footerCredit">Criado por Edson Sousa</p>
+    </footer>
+
+    <script>
+        const translations = {
+            'pt': {
+                backToJourney: '← Voltar para a Jornada',
+                chapter5Title: 'Capítulo 5: Erguendo os Escudos',
+                chapter5Intro: 'O mapa foi traçado, a comitiva está unida, as runas foram forjadas e a vigília foi mantida. Chegou o momento de concluir nossa missão. Todas as preparações nos trouxeram a este ponto: a decisão de erguer os escudos e transformar nossas defesas de um aviso em uma barreira impenetrável. <strong>Para o recruta, este é o auge da jornada. Para o mestre, é o início de uma nova e eterna vigília.</strong>',
+                section1Title: 'A Câmara do Veredito Final',
+                stateTitle: 'O Estado da Fortaleza',
+                stateTooltip: 'Este painel reflete o "Estado de Prontidão" antes da janela de mudança. Todos os alertas devem ser zero ou justificados no plano.',
+                stateAlerts: 'Alertas Pendentes',
+                stateReviewed: 'Fluxos Analisados',
+                checklistTitle: 'A Última Verificação',
+                check1: 'As violações foram revistas',
+                check1Tooltip: 'Significa que cada \'Alerta\' do Capítulo 4 foi analisado e classificado. Nenhum tráfego desconhecido será bloqueado por acidente.',
+                check2: 'Os Guardiões de Pedra estão no modo de execução',
+                check2Tooltip: 'Verificamos que todas as nossas sentinelas estão online e prontas para aplicar as leis, sem bandeiras de erro ou corrupção.',
+                check3: 'A comitiva aprova a ativação',
+                check3Tooltip: 'O Arquiteto, a Guardiã, o Engenheiro e o Lorde do Ativo deram sua bênção final. A comunicação e a aprovação formal são a chave para uma mudança sem caos.',
+                activateButton: 'Ativar o Grande Escudo',
+                activateTooltip: 'Conclua a verificação para ativar o escudo.',
+                consequenceTitle: 'Status: Protegido e Sob Vigilância Ativa',
+                consequenceDesc: 'O Grande Escudo está erguido. As fronteiras estão seladas. A fortaleza agora repele ativamente as ameaças conhecidas e desconhecidas. Mas o trabalho não termina; ele apenas muda de natureza. A Vigília Eterna começou.',
+                resetAltarButton: 'Refazer o Ritual',
+                expertTitle: 'O Ritual de Ativação: Táticas de Um Mestre',
+                expert1Title: 'Plano de Reversão (Rollback):',
+                expert1Desc: 'Todo Mestre Artífice sabe que mesmo a runa mais perfeita pode ter uma consequência inesperada. É crucial ter um \'feitiço de reversão\' pronto: um script ou processo para reverter a política para o \'Modo de Alerta\' em menos de 5 minutos. Este plano deve ser documentado e aprovado pelo Conselho (CAB) antes mesmo da janela de ativação.',
+                expert2Title: 'Implementação em Fases (Phased Rollout):',
+                expert2Desc: 'Nunca erga os muros de todo o reino de uma só vez. A sabedoria está em começar pelas cidadelas menos críticas. Dentro do reino de produção, ative o escudo em uma única torre (servidor) primeiro. Monitore. Se tudo estiver estável, expanda para a muralha inteira. Esta tática minimiza o raio de impacto de qualquer anomalia.',
+                expert3Title: 'Vigilância Intensificada (Hypercare):',
+                expert3Desc: 'Após erguer o escudo, a comitiva não descansa. Uma \'Ponte de Guerra\' (war room) é aberta com todos os membros do Conselho. As métricas de performance, o fluxo de comércio e os contadores de bloqueio são observados obsessivamente nas primeiras horas. Qualquer cidadão (usuário) que relatar um problema tem sua chamada priorizada.',
+                expert4Title: 'A Nova Normalidade (Monitoramento Contínuo):',
+                expert4Desc: 'A segurança não é um projeto com um fim; é um programa de vigilância eterna. O trabalho muda de \'construção\' para \'manutenção\': revisar regras, proteger novas cidadelas (onboarding) e manter a documentação das runas sempre atualizada.',
+                nextChapter: 'Concluir a Jornada e Ler o Epílogo →',
+                footerCredit: 'Criado por Edson Sousa',
+            },
+            'en': {
+                backToJourney: '← Back to the Journey',
+                chapter5Title: 'Chapter 5: Raising the Shields',
+                chapter5Intro: 'The map has been drawn, the fellowship is united, the runes have been forged, and the watch has been kept. The time has come to complete our mission. All preparations have brought us to this point: the decision to raise the shields and turn our defenses from a warning into an impenetrable barrier. <strong>For the recruit, this is the pinnacle of the journey. For the master, it is the beginning of a new and eternal watch.</strong>',
+                section1Title: 'The Chamber of the Final Verdict',
+                stateTitle: 'The State of the Fortress',
+                stateTooltip: 'This panel reflects the "State of Readiness" before the change window. All alerts must be zero or justified in the plan.',
+                stateAlerts: 'Pending Alerts',
+                stateReviewed: 'Analyzed Flows',
+                checklistTitle: 'The Final Check',
+                check1: 'Violations have been reviewed',
+                check1Tooltip: 'This means every \'Alert\' from Chapter 4 has been analyzed and classified. No unknown traffic will be accidentally blocked.',
+                check2: 'The Stone Guardians are in enforcement mode',
+                check2Tooltip: 'We have verified that all our sentinels are online and ready to enforce the laws, with no error flags or corruption.',
+                check3: 'The fellowship approves activation',
+                check3Tooltip: 'The Architect, the Guardian, the Engineer, and the Asset Lord have given their final blessing. Communication and formal approval are the key to a chaos-free change.',
+                activateButton: 'Activate the Great Shield',
+                activateTooltip: 'Complete the checklist to activate the shield.',
+                consequenceTitle: 'Status: Protected and Under Active Watch',
+                consequenceDesc: 'The Great Shield is raised. The borders are sealed. The fortress now actively repels known and unknown threats. But the work does not end; it merely changes its nature. The Eternal Watch has begun.',
+                resetAltarButton: 'Redo the Ritual',
+                expertTitle: 'The Activation Ritual: A Master\'s Tactics',
+                expert1Title: 'Rollback Plan:',
+                expert1Desc: 'Every Master Artificer knows that even the most perfect rune can have an unexpected consequence. It is crucial to have a \'reversal spell\' ready: a script or process to revert the policy to \'Alert Mode\' in under 5 minutes. This plan must be documented and approved by the Council (CAB) even before the activation window.',
+                expert2Title: 'Phased Rollout:',
+                expert2Desc: 'Never raise the walls of the entire kingdom at once. Wisdom lies in starting with the least critical citadels. Within the production realm, activate the shield on a single tower (server) first. Monitor. If all is stable, expand to the entire wall. This tactic minimizes the blast radius of any anomaly.',
+                expert3Title: 'Hypercare:',
+                expert3Desc: 'After raising the shield, the fellowship does not rest. A \'War Bridge\' (war room) is opened with all Council members. Performance metrics, trade flow, and block counters are obsessively watched in the first few hours. Any citizen (user) who reports a problem has their call prioritized.',
+                expert4Title: 'The New Normal (Continuous Monitoring):',
+                expert4Desc: 'Security is not a project with an end; it is a program of eternal vigilance. The work shifts from \'construction\' to \'maintenance\': reviewing rules, protecting new citadels (onboarding), and keeping the rune documentation always up to date.',
+                nextChapter: 'Complete the Journey and Read the Epilogue →',
+                footerCredit: 'Created by Edson Sousa',
+            },
+            'es': {
+                backToJourney: '← Volver a la Jornada',
+                chapter5Title: 'Capítulo 5: Levantando los Escudos',
+                chapter5Intro: 'El mapa ha sido trazado, la comunidad está unida, las runas han sido forjadas y la vigilia se ha mantenido. Ha llegado el momento de concluir nuestra misión. Todas las preparaciones nos han traído a este punto: la decisión de levantar los escudos y transformar nuestras defensas de una advertencia en una barrera impenetrable. <strong>Para el recluta, este es el apogeo del viaje. Para el maestro, es el comienzo de una nueva y eterna vigilia.</strong>',
+                section1Title: 'La Cámara del Veredicto Final',
+                stateTitle: 'El Estado de la Fortaleza',
+                stateTooltip: 'Este panel refleja el "Estado de Preparación" antes de la ventana de cambio. Todas las alertas deben ser cero o estar justificadas en el plan.',
+                stateAlerts: 'Alertas Pendientes',
+                stateReviewed: 'Flujos Analizados',
+                checklistTitle: 'La Última Verificación',
+                check1: 'Las violaciones han sido revisadas',
+                check1Tooltip: 'Significa que cada \'Alerta\' del Capítulo 4 ha sido analizada y clasificada. Ningún tráfico desconocido será bloqueado por accidente.',
+                check2: 'Los Guardianes de Piedra están en modo de ejecución',
+                check2Tooltip: 'Hemos verificado que todos nuestros centinelas están en línea y listos para aplicar las leyes, sin indicadores de error o corrupción.',
+                check3: 'La comunidad aprueba la activación',
+                check3Tooltip: 'El Arquitecto, la Guardiana, el Ingeniero y el Señor del Activo han dado su bendición final. La comunicación y la aprobación formal son la clave para un cambio sin caos.',
+                activateButton: 'Activar el Gran Escudo',
+                activateTooltip: 'Completa la verificación para activar el escudo.',
+                consequenceTitle: 'Estado: Protegido y Bajo Vigilancia Activa',
+                consequenceDesc: 'El Gran Escudo se ha levantado. Las fronteras están selladas. La fortaleza ahora repele activamente las amenazas conocidas y desconocidas. Pero el trabajo no termina; simplemente cambia de naturaleza. La Vigilia Eterna ha comenzado.',
+                resetAltarButton: 'Rehacer el Ritual',
+                expertTitle: 'El Ritual de Activación: Tácticas de un Maestro',
+                expert1Title: 'Plan de Reversión (Rollback):',
+                expert1Desc: 'Todo Maestro Artesano sabe que incluso la runa más perfecta puede tener una consecuencia inesperada. Es crucial tener un \'hechizo de reversión\' preparado: un script o proceso para revertir la política al \'Modo de Alerta\' en menos de 5 minutos. Este plan debe ser documentado y aprobado por el Consejo (CAB) incluso antes de la ventana de activación.',
+                expert2Title: 'Implementación por Fases (Phased Rollout):',
+                expert2Desc: 'Nunca levantes las murallas de todo el reino a la vez. La sabiduría reside en comenzar por las ciudadelas menos críticas. Dentro del reino de producción, activa el escudo en una sola torre (servidor) primero. Monitorea. Si todo está estable, expande a toda la muralla. Esta táctica minimiza el radio de impacto de cualquier anomalía.',
+                expert3Title: 'Vigilancia Intensificada (Hypercare):',
+                expert3Desc: 'Después de levantar el escudo, la comunidad no descansa. Se abre un \'Puente de Guerra\' (war room) con todos los miembros del Consejo. Las métricas de rendimiento, el flujo comercial y los contadores de bloqueo se observan obsesivamente en las primeras horas. Cualquier ciudadano (usuario) que informe de un problema tiene su llamada priorizada.',
+                expert4Title: 'La Nueva Normalidad (Monitoreo Continuo):',
+                expert4Desc: 'La seguridad no es un proyecto con un fin; es un programa de vigilancia eterna. El trabajo cambia de \'construcción\' a \'mantenimiento\': revisar reglas, proteger nuevas ciudadelas (onboarding) y mantener la documentación de las runas siempre actualizada.',
+                nextChapter: 'Completar el Viaje y Leer el Epílogo →',
+                footerCredit: 'Creado por Edson Sousa',
+            },
+        };
+
+        let currentLang = 'pt';
+        
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            const tr = translations[currentLang] || translations['pt'];
+            if (!tr) return; 
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (tr[key]) el.innerHTML = tr[key];
+            });
+            document.querySelectorAll('.lang-flag').forEach(flag => {
+                flag.classList.toggle('active', flag.getAttribute('data-lang-set') === lang);
+                flag.classList.toggle('opacity-50', flag.getAttribute('data-lang-set') !== lang);
+            })
+        }
+        
+        document.querySelectorAll('.lang-flag').forEach(flag => {
+            flag.addEventListener('click', (e) => {
+                 setLanguage(e.target.getAttribute('data-lang-set'));
+            })
+        });
+
+        // Checklist Logic
+        const checklistItems = document.querySelectorAll('.checklist-item');
+        const activateBtn = document.getElementById('activate-shield-btn');
+        const activationDiv = document.getElementById('activation-div');
+        const activationTooltip = document.getElementById('activation-tooltip');
+
+        function checkCompletion() {
+            const allChecked = Array.from(checklistItems).every(item => item.checked);
+            activateBtn.disabled = !allChecked;
+            if(activateBtn.disabled){
+                activationTooltip.classList.remove('hidden');
+                activationDiv.classList.add('tooltip-container')
+            } else {
+                 activationTooltip.classList.add('hidden');
+                 activationDiv.classList.remove('tooltip-container')
+            }
+        }
+
+        checklistItems.forEach(item => {
+            item.addEventListener('change', checkCompletion);
+        });
+
+        activateBtn.addEventListener('click', () => {
+            document.getElementById('final-checklist').classList.add('hidden');
+            document.getElementById('activation-div').classList.add('hidden');
+            const consequenceDiv = document.getElementById('consequence-div');
+            consequenceDiv.classList.remove('hidden');
+            consequenceDiv.classList.add('shield-effect');
+        });
+
+        document.getElementById('reset-altar-btn').addEventListener('click', () => {
+            document.getElementById('consequence-div').classList.add('hidden');
+            document.getElementById('final-checklist').classList.remove('hidden');
+            document.getElementById('activation-div').classList.remove('hidden');
+            checklistItems.forEach(item => item.checked = false);
+            checkCompletion();
+        });
+        
+        // Initial call
+        checkCompletion();
+        setLanguage('pt');
+    </script>
+</body>
+</html>

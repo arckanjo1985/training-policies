@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crônicas da Fortaleza Digital - A Comitiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+            color: #e5e7eb;
+        }
+        .main-footer { color: #9ca3af; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .lang-flag { cursor: pointer; height: 1.5rem; transition: all 0.2s; border: 2px solid transparent; border-radius: 4px; }
+        .lang-flag:not(.active) { opacity: 0.5; }
+        .lang-flag.active { opacity: 1; border-color: #60A5FA; }
+        .lang-flag:hover { opacity: 1; transform: scale(1.1); }
+        
+        /* Modal Styles */
+        .modal {
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: #1f2937; /* bg-gray-800 */
+        }
+
+        /* Hero Card Styles */
+        .hero-card {
+            background-color: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(4px);
+            border: 1px solid #374151;
+            transition: all 0.3s ease;
+        }
+        .hero-card:hover {
+            transform: scale(1.05);
+            border-color: #3b82f6;
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+        }
+        .hero-portrait {
+             aspect-ratio: 1/1;
+             object-fit: cover;
+        }
+
+        /* Accordion Styles */
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details .summary-icon { transition: transform 0.3s ease; }
+        details[open] .summary-icon { transform: rotate(135deg); }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <!-- Header -->
+    <header class="bg-gray-800/80 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div>
+                 <a href="index.html" class="text-sm text-sky-400 hover:text-sky-300" data-lang="backToJourney">← Voltar para a Jornada</a>
+            </div>
+            <div id="language-switcher-flags" class="flex items-center space-x-2">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" title="Português" alt="Bandeira do Brasil" class="lang-flag active" data-lang-set="pt">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" title="English" alt="Bandeira dos EUA" class="lang-flag" data-lang-set="en">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" title="Español" alt="Bandeira da Espanha" class="lang-flag" data-lang-set="es">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Chapter Banner -->
+        <section class="relative h-[60vh] flex items-center justify-center text-center text-white p-4">
+             <div class="absolute inset-0 bg-black/60 z-10"></div>
+             <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_vb1ikuvb1ikuvb1i.png" class="absolute inset-0 w-full h-full object-cover" alt="A comitiva reunida em volta de um mapa holográfico">
+             <div class="relative z-20">
+                <h1 class="text-4xl md:text-6xl font-black" data-lang="chapter2Title" style="text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);">Capítulo 2: A Comitiva</h1>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-200" data-lang="chapter2Intro" style="text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);">
+                    Com o mapa decifrado, a jornada agora exige a formação da comitiva. Nenhuma fortaleza é erguida por um só homem. Conheça os guardiões que irão erguer e defender a fortaleza.
+                </p>
+             </div>
+        </section>
+
+        <!-- Section 1: The War Council -->
+        <section class="py-16 sm:py-24">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <h2 class="text-3xl font-bold text-center text-sky-300 mb-12" data-lang="section1Title">O Conselho de Guerra</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Hero Card 1 -->
+                    <div class="hero-card rounded-xl p-6 text-center cursor-pointer" onclick="openDossier('architect')">
+                        <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_vixqadvixqadvixq.png" class="hero-portrait w-32 h-32 rounded-full mx-auto border-4 border-gray-600">
+                        <h3 class="mt-4 text-xl font-bold text-white" data-lang="hero1_name">O Arquiteto</h3>
+                        <p class="mt-1 text-sm text-sky-400" data-lang="hero1_role">Equipe de Segmentação</p>
+                    </div>
+                     <!-- Hero Card 2 -->
+                    <div class="hero-card rounded-xl p-6 text-center cursor-pointer" onclick="openDossier('guardian')">
+                        <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_gdby01gdby01gdby.png" class="hero-portrait w-32 h-32 rounded-full mx-auto border-4 border-gray-600">
+                        <h3 class="mt-4 text-xl font-bold text-white" data-lang="hero2_name">A Guardiã</h3>
+                        <p class="mt-1 text-sm text-sky-400" data-lang="hero2_role">Equipe de Operações de Seg.</p>
+                    </div>
+                     <!-- Hero Card 3 -->
+                    <div class="hero-card rounded-xl p-6 text-center cursor-pointer" onclick="openDossier('engineer')">
+                        <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_bwx5qubwx5qubwx5.png" class="hero-portrait w-32 h-32 rounded-full mx-auto border-4 border-gray-600">
+                        <h3 class="mt-4 text-xl font-bold text-white" data-lang="hero3_name">O Engenheiro</h3>
+                        <p class="mt-1 text-sm text-sky-400" data-lang="hero3_role">Equipe de Suporte e Oper.</p>
+                    </div>
+                     <!-- Hero Card 4 -->
+                    <div class="hero-card rounded-xl p-6 text-center cursor-pointer" onclick="openDossier('lord')">
+                        <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_3ic7ty3ic7ty3ic7.png" class="hero-portrait w-32 h-32 rounded-full mx-auto border-4 border-gray-600">
+                        <h3 class="mt-4 text-xl font-bold text-white" data-lang="hero4_name">O Lorde do Ativo</h3>
+                        <p class="mt-1 text-sm text-sky-400" data-lang="hero4_role">Dono da Aplicação</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Appendix: RBAC Tome -->
+        <section class="py-12 sm:pt-4 sm:pb-24">
+             <div class="container mx-auto px-6 max-w-5xl">
+                <details class="bg-gray-800/30 border border-gray-700/50 rounded-lg">
+                    <summary class="p-6 flex justify-between items-center">
+                        <span class="font-bold text-xl text-amber-300" data-lang="appendixTitle">Consolidado do Conselho: Tabela de Funções (RBAC)</span>
+                         <span class="summary-icon text-amber-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                         </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-300 overflow-x-auto" style="background:rgba(0,0,0,0.2)">
+                       <table class="min-w-full divide-y divide-gray-600">
+                           <thead class="bg-gray-700/50">
+                               <tr>
+                                   <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider" data-lang="tableHead1">Equipe</th>
+                                   <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider" data-lang="tableHead2">Descrição</th>
+                                   <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider" data-lang="tableHead3">Função Sugerida</th>
+                               </tr>
+                           </thead>
+                           <tbody class="divide-y divide-gray-700">
+                               <tr><td class="px-6 py-4" data-lang="team1_name">Product Owner</td><td class="px-6 py-4" data-lang="team1_desc">Responsável pela gestão geral da solução.</td><td class="px-6 py-4">Global Administrator, System Administrator</td></tr>
+                               <tr><td class="px-6 py-4" data-lang="team2_name">Security Segmentation</td><td class="px-6 py-4" data-lang="team2_desc">Operação diária da plataforma.</td><td class="px-6 py-4">Global Policy Administrator, Application Administrator</td></tr>
+                               <tr><td class="px-6 py-4" data-lang="team3_name">Application Owner</td><td class="px-6 py-4" data-lang="team3_desc">Garante que políticas não impactem as aplicações.</td><td class="px-6 py-4">Application Administrator, Application Owner, Application Viewer</td></tr>
+                               <tr><td class="px-6 py-4" data-lang="team4_name">SecOps</td><td class="px-6 py-4" data-lang="team4_desc">Implanta e mantém os agentes de segmentação.</td><td class="px-6 py-4">Papel customizado (agentes, rótulos)</td></tr>
+                               <tr><td class="px-6 py-4" data-lang="team5_name">SOC/NOC</td><td class="px-6 py-4" data-lang="team5_desc">Monitora e responde a incidentes.</td><td class="px-6 py-4">Incidents Viewer</td></tr>
+                           </tbody>
+                       </table>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Final Navigation -->
+        <section class="py-16 text-center">
+            <a href="capitulo3.html" class="inline-block bg-sky-500 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-sky-600 transition-transform hover:scale-105" data-lang="nextChapter">Próximo Marco: Forjar as Runas de Proteção →</a>
+        </section>
+
+    </main>
+    
+    <footer class="main-footer text-center p-6 text-sm relative z-10">
+        <p data-lang="footerCredit">Criado por Edson Sousa</p>
+    </footer>
+
+    <!-- Dossier Modal -->
+    <div id="dossier-modal" class="modal fixed inset-0 z-50 items-center justify-center hidden" >
+        <div id="dossier-backdrop" class="fixed inset-0"></div>
+        <div class="modal-content relative w-full max-w-4xl border border-gray-600 rounded-lg shadow-xl p-8 m-4 max-h-[90vh] overflow-y-auto">
+            <button id="dossier-close" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div id="dossier-content"></div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const translations = {
+                'pt': {
+                    backToJourney: '← Voltar para a Jornada',
+                    chapter2Title: 'Capítulo 2: A Comitiva',
+                    chapter2Intro: 'Com o mapa decifrado, a jornada agora exige a formação da comitiva. Nenhuma fortaleza é erguida por um só homem. Conheça os guardiões que irão erguer e defender a fortaleza.',
+                    section1Title: 'O Conselho de Guerra',
+                    hero1_name: 'O Arquiteto', hero1_role: 'Equipe de Segmentação',
+                    hero2_name: 'A Guardiã', hero2_role: 'Equipe de Operações de Seg.',
+                    hero3_name: 'O Engenheiro', hero3_role: 'Equipe de Suporte e Oper.',
+                    hero4_name: 'O Lorde do Ativo', hero4_role: 'Dono da Aplicação',
+                    dossier_title: 'Dossiê do Membro da Comitiva',
+                    resp_title: 'Responsabilidades Principais',
+                    rbac_title: 'Funções no Conselho (RBAC)',
+                    motto_title: 'Lema',
+                    expert_title: 'Estratégia do Mestre',
+                    architect_resp: '<li>Define as arquiteturas de segmentação.</li><li>Aprova as regras e garante a conformidade.</li><li>Refina políticas com base em auditorias.</li>',
+                    architect_rbac: 'Global Policy Administrator, Application Administrator',
+                    architect_motto: 'Eu desenho as muralhas que ninguém vê, mas que protegem a todos.',
+                    architect_expert: 'O maior desafio do Arquiteto é balancear a segurança com a funcionalidade em ambientes com múltiplas dependências. Uma única regra mal planejada para proteger a "Tesouraria" pode inadvertidamente cortar o acesso da "Biblioteca" ao "Oráculo" (DNS), causando um colapso em cascata. A maestria está em visualizar não apenas o fluxo direto, mas todo o ecossistema de serviços.',
+                    guardian_resp: '<li>Implanta os agentes de micro-segmentação.</li><li>Mantém a integridade do sistema e monitora a segurança.</li><li>Investiga e mitiga violações de política.</li>',
+                    guardian_rbac: 'Papel customizado (acesso a agentes, rótulos)',
+                    guardian_motto: 'Enquanto eu estiver de vigia, nenhuma sombra passará despercebida.',
+                    guardian_expert: 'A Guardiã enfrenta o desafio de implantar sentinelas em terrenos variados. Reinos antigos com sistemas legados (mainframes) exigem táticas diferentes das novas colônias na nuvem (contêineres), que são dinâmicas e efêmeras. A estratégia avançada é usar automação para o posicionamento de Guardiões em ambientes efêmeros, garantindo que nenhuma nova construção fique desprotegida.',
+                    engineer_resp: '<li>Monitora a performance da aplicação e da rede.</li><li>Soluciona problemas de conectividade e aplicação das regras.</li><li>Otimiza configurações para máxima eficiência.</li>',
+                    engineer_rbac: 'Depende da necessidade (geralmente acesso a logs e métricas)',
+                    engineer_motto: 'Uma muralha forte é inútil se os portões não abrem para os amigos.',
+                    engineer_expert: 'O Engenheiro é o diplomata da guerra. Seu maior desafio é o "falso positivo" - uma regra legítima que bloqueia uma operação crítica do negócio. A tática do mestre é estabelecer canais de comunicação rápidos com o Lorde do Ativo. Antes de mover qualquer política para bloqueio, ele conduz "testes de cerco" simulados (testes de conectividade) para garantir que as rotas comerciais e os fluxos de suprimentos vitais não sejam interrompidos.',
+                    lord_resp: '<li>Valida o impacto da segmentação na performance da aplicação.</li><li>Comunica dependências críticas do negócio.</li><li>Aprova as políticas de segurança finais para implantação.</li>',
+                    lord_rbac: 'Application Administrator, Application Owner, Application Viewer',
+                    lord_motto: 'Minha cidadela deve ser segura, mas seu comércio deve florescer.',
+                    lord_expert: 'O Lorde do Ativo possui o conhecimento que nenhum mapa revela: as "rotas secretas" e dependências não óbvias de sua aplicação. Seu desafio é traduzir o conhecimento de negócio em requisitos técnicos claros para o Arquiteto. Um Lorde experiente não espera ser perguntado; ele provê proativamente um mapa detalhado de todas as suas rotas comerciais (dependências de API, bancos de dados, serviços de terceiros) para evitar surpresas custosas durante a fase de bloqueio.',
+                    appendixTitle: 'Consolidado do Conselho: Tabela de Funções (RBAC)',
+                    tableHead1: 'Equipe', tableHead2: 'Descrição', tableHead3: 'Função Sugerida',
+                    team1_name: 'Product Owner', team1_desc: 'Responsável pela gestão geral da solução.',
+                    team2_name: 'Security Segmentation', team2_desc: 'Operação diária da plataforma.',
+                    team3_name: 'Application Owner', team3_desc: 'Garante que políticas não impactem as aplicações.',
+                    team4_name: 'SecOps', team4_desc: 'Implanta e mantém os agentes de segmentação.',
+                    team5_name: 'SOC/NOC', team5_desc: 'Monitora e responde a incidentes.',
+                    nextChapter: 'Próximo Marco: Forjar as Runas de Proteção →',
+                    footerCredit: 'Criado por Edson Sousa',
+                },
+                'en': {
+                    backToJourney: '← Back to the Journey',
+                    chapter2Title: 'Chapter 2: The Fellowship',
+                    chapter2Intro: 'With the map deciphered, the journey now requires the formation of the fellowship. No fortress is built by one person alone. Meet the guardians who will raise and defend the fortress.',
+                    section1Title: 'The War Council',
+                    hero1_name: 'The Architect', hero1_role: 'Segmentation Team',
+                    hero2_name: 'The Guardian', hero2_role: 'SecOps Team',
+                    hero3_name: 'The Engineer', hero3_role: 'Support & Ops Team',
+                    hero4_name: 'The Asset Lord', hero4_role: 'Application Owner',
+                    dossier_title: 'Fellowship Member Dossier',
+                    resp_title: 'Key Responsibilities',
+                    rbac_title: 'Council Roles (RBAC)',
+                    motto_title: 'Motto',
+                    expert_title: 'Master\'s Strategy',
+                    architect_resp: '<li>Defines segmentation architectures.</li><li>Approves rules and ensures compliance.</li><li>Refines policies based on audits.</li>',
+                    architect_rbac: 'Global Policy Administrator, Application Administrator',
+                    architect_motto: 'I draw the walls no one sees, but which protect everyone.',
+                    architect_expert: 'The Architect\'s greatest challenge is balancing security with functionality in environments with multiple dependencies. A single poorly planned rule to protect the "Treasury" can inadvertently cut off the "Library\'s" access to the "Oracle" (DNS), causing a cascading failure. Mastery lies in visualizing not just the direct flow, but the entire service ecosystem.',
+                    guardian_resp: '<li>Deploys micro-segmentation agents.</li><li>Maintains system integrity and monitors security.</li><li>Investigates and mitigates policy violations.</li>',
+                    guardian_rbac: 'Custom role (agent, label access)',
+                    guardian_motto: 'While I am on watch, no shadow will go unnoticed.',
+                    guardian_expert: 'The Guardian faces the challenge of deploying sentinels on varied terrains. Ancient kingdoms with legacy systems (mainframes) require different tactics than the new colonies in the cloud (containers), which are dynamic and ephemeral. The advanced strategy is to use automation for positioning Guardians in ephemeral environments, ensuring no new construction is left unprotected.',
+                    engineer_resp: '<li>Monitors application and network performance.</li><li>Troubleshoots connectivity and rule enforcement issues.</li><li>Optimizes configurations for maximum efficiency.</li>',
+                    engineer_rbac: 'Depends on need (usually access to logs and metrics)',
+                    engineer_motto: 'A strong wall is useless if the gates do not open for friends.',
+                    engineer_expert: 'The Engineer is the diplomat of the war. Their greatest challenge is the "false positive" - a legitimate rule that blocks a critical business operation. The master\'s tactic is to establish fast communication channels with the Asset Lord. Before moving any policy to block, they conduct simulated "siege tests" (connectivity tests) to ensure that vital trade routes and supply flows are not interrupted.',
+                    lord_resp: '<li>Validates the impact of segmentation on application performance.</li><li>Communicates critical business dependencies.</li><li>Approves final security policies for deployment.</li>',
+                    lord_rbac: 'Application Administrator, Application Owner, Application Viewer',
+                    lord_motto: 'My citadel must be secure, but its trade must flourish.',
+                    lord_expert: 'The Asset Lord possesses knowledge that no map reveals: the "secret routes" and non-obvious dependencies of their application. Their challenge is to translate business knowledge into clear technical requirements for the Architect. An experienced Lord does not wait to be asked; they proactively provide a detailed map of all their trade routes (API dependencies, databases, third-party services) to avoid costly surprises during the blocking phase.',
+                    appendixTitle: 'Council Consolidated: Roles Table (RBAC)',
+                    tableHead1: 'Team', tableHead2: 'Description', tableHead3: 'Suggested Role',
+                    team1_name: 'Product Owner', team1_desc: 'Responsible for the overall solution management.',
+                    team2_name: 'Security Segmentation', team2_desc: 'Daily operation of the platform.',
+                    team3_name: 'Application Owner', team3_desc: 'Ensures policies do not negatively impact applications.',
+                    team4_name: 'SecOps', team4_desc: 'Deploys and maintains segmentation agents.',
+                    team5_name: 'SOC/NOC', team5_desc: 'Monitors and responds to incidents.',
+                    nextChapter: 'Next Milestone: Forging the Runes of Protection →',
+                    footerCredit: 'Created by Edson Sousa',
+                },
+                'es': {
+                    backToJourney: '← Volver a la Jornada',
+                    chapter2Title: 'Capítulo 2: La Comunidad',
+                    chapter2Intro: 'Con el mapa descifrado, el viaje ahora requiere la formación de la comunidad. Ninguna fortaleza es construida por una sola persona. Conoce a los guardianes que levantarán y defenderán la fortaleza.',
+                    section1Title: 'El Consejo de Guerra',
+                    hero1_name: 'El Arquitecto', hero1_role: 'Equipo de Segmentación',
+                    hero2_name: 'La Guardiana', hero2_role: 'Equipo de Operaciones de Seg.',
+                    hero3_name: 'El Ingeniero', hero3_role: 'Equipo de Soporte y Oper.',
+                    hero4_name: 'El Señor del Activo', hero4_role: 'Dueño de la Aplicación',
+                    dossier_title: 'Dossier del Miembro de la Comunidad',
+                    resp_title: 'Responsabilidades Principales',
+                    rbac_title: 'Roles en el Consejo (RBAC)',
+                    motto_title: 'Lema',
+                    expert_title: 'Estrategia del Maestro',
+                    architect_resp: '<li>Define las arquitecturas de segmentación.</li><li>Aprueba las reglas y garantiza la conformidad.</li><li>Refina políticas basándose en auditorías.</li>',
+                    architect_rbac: 'Global Policy Administrator, Application Administrator',
+                    architect_motto: 'Dibujo las murallas que nadie ve, pero que protegen a todos.',
+                    architect_expert: 'El mayor desafío del Arquitecto es equilibrar la seguridad con la funcionalidad en entornos con múltiples dependencias. Una sola regla mal planificada para proteger la "Tesorería" puede cortar inadvertidamente el acceso de la "Biblioteca" al "Oráculo" (DNS), provocando un fallo en cascada. La maestría reside en visualizar no solo el flujo directo, sino todo el ecosistema de servicios.',
+                    guardian_resp: '<li>Despliega los agentes de micro-segmentación.</li><li>Mantiene la integridad del sistema y monitorea la seguridad.</li><li>Investiga y mitiga las violaciones de políticas.</li>',
+                    guardian_rbac: 'Rol personalizado (acceso a agentes, etiquetas)',
+                    guardian_motto: 'Mientras yo esté de guardia, ninguna sombra pasará desapercebida.',
+                    guardian_expert: 'La Guardiana se enfrenta al desafío de desplegar centinelas en terrenos variados. Reinos antiguos con sistemas heredados (mainframes) requieren tácticas diferentes a las nuevas colonias en la nube (contenedores), que son dinámicas y efímeras. La estrategia avanzada es usar la automatización para posicionar Guardianes en entornos efímeros, asegurando que ninguna nueva construcción quede desprotegida.',
+                    engineer_resp: '<li>Monitorea el rendimiento de la aplicación y la red.</li><li>Soluciona problemas de conectividad y aplicación de reglas.</li><li>Optimiza configuraciones para una máxima eficiencia.</li>',
+                    engineer_rbac: 'Depende de la necesidad (generalmente acceso a registros y métricas)',
+                    engineer_motto: 'Una muralla fuerte es inútil si las puertas no se abren para los amigos.',
+                    engineer_expert: 'El Ingeniero es el diplomático de la guerra. Su mayor desafío es el "falso positivo", una regla legítima que bloquea una operación crítica del negocio. La táctica del maestro es establecer canales de comunicación rápidos con el Señor del Activo. Antes de pasar cualquier política a modo de bloqueo, realiza "pruebas de asedio" simuladas (pruebas de conectividad) para garantizar que las rutas comerciales y los flujos de suministro vitales no se interrumpan.',
+                    lord_resp: '<li>Valida el impacto de la segmentación en el rendimiento de la aplicación.</li><li>Comunica las dependencias críticas del negocio.</li><li>Aprueba las políticas de seguridad finales para su despliegue.</li>',
+                    lord_rbac: 'Application Administrator, Application Owner, Application Viewer',
+                    lord_motto: 'Mi ciudadela debe ser segura, pero su comercio debe florecer.',
+                    lord_expert: 'El Señor del Activo posee el conocimiento que ningún mapa revela: las "rutas secretas" y dependencias no obvias de su aplicación. Su desafío es traducir el conocimiento del negocio en requisitos técnicos claros para el Arquitecto. Un Señor experimentado no espera a que le pregunten; proporciona proactivamente un mapa detallado de todas sus rutas comerciales (dependencias de API, bases de datos, servicios de terceros) para evitar sorpresas costosas durante la fase de bloqueo.',
+                    appendixTitle: 'Consolidado del Consejo: Tabla de Roles (RBAC)',
+                    tableHead1: 'Equipo', tableHead2: 'Descripción', tableHead3: 'Rol Sugerido',
+                    team1_name: 'Dueño del Producto', team1_desc: 'Responsable de la gestión general de la solución.',
+                    team2_name: 'Segmentación de Seg.', team2_desc: 'Operación diaria de la plataforma.',
+                    team3_name: 'Dueño de Aplicación', team3_desc: 'Garantiza que las políticas no afecten negativamente a las aplicaciones.',
+                    team4_name: 'SecOps', team4_desc: 'Despliega y mantiene los agentes de segmentación.',
+                    team5_name: 'SOC/NOC', team5_desc: 'Monitorea y responde a incidentes.',
+                    nextChapter: 'Siguiente Hito: Forjar las Runas de Protección →',
+                    footerCredit: 'Creado por Edson Sousa',
+                },
+            };
+            const dossierData = {
+                'architect': { name: 'hero1_name', role: 'hero1_role', resp: 'architect_resp', rbac: 'architect_rbac', motto: 'architect_motto', expert: 'architect_expert' },
+                'guardian': { name: 'hero2_name', role: 'hero2_role', resp: 'guardian_resp', rbac: 'guardian_rbac', motto: 'guardian_motto', expert: 'guardian_expert' },
+                'engineer': { name: 'hero3_name', role: 'hero3_role', resp: 'engineer_resp', rbac: 'engineer_rbac', motto: 'engineer_motto', expert: 'engineer_expert' },
+                'lord': { name: 'hero4_name', role: 'hero4_role', resp: 'lord_resp', rbac: 'lord_rbac', motto: 'lord_motto', expert: 'lord_expert' }
+            }
+
+            const langFlags = document.querySelectorAll('.lang-flag');
+            let currentLang = 'pt';
+            
+            function setLanguage(lang) {
+                currentLang = lang;
+                document.documentElement.lang = lang;
+                const tr = translations[lang] || translations['pt'];
+                if (!tr) return; 
+                document.querySelectorAll('[data-lang]').forEach(el => {
+                    const key = el.getAttribute('data-lang');
+                    if (tr[key]) el.innerHTML = tr[key];
+                });
+                langFlags.forEach(flag => {
+                    flag.classList.toggle('active', flag.getAttribute('data-lang-set') === lang);
+                    flag.classList.toggle('opacity-50', flag.getAttribute('data-lang-set') !== lang);
+                })
+            }
+            
+            langFlags.forEach(flag => {
+                flag.addEventListener('click', (e) => {
+                     setLanguage(e.target.getAttribute('data-lang-set'));
+                })
+            })
+
+            const dossierModal = document.getElementById('dossier-modal');
+            const dossierContent = document.getElementById('dossier-content');
+            const dossierClose = document.getElementById('dossier-close');
+            const dossierBackdrop = document.getElementById('dossier-backdrop');
+
+            window.openDossier = function(heroKey) {
+                const heroData = dossierData[heroKey];
+                const tr = translations[currentLang] || translations['pt'];
+                dossierContent.innerHTML = `
+                    <div class="md:flex md:space-x-8">
+                        <div class="md:w-1/3 text-center mb-6 md:mb-0">
+                             <img src="${document.querySelector(`[onclick="openDossier('${heroKey}')"] img`).src}" class="hero-portrait w-40 h-40 rounded-full mx-auto border-4 border-sky-400">
+                        </div>
+                        <div class="md:w-2/3">
+                            <h2 class="text-3xl font-bold text-white mb-1" data-lang="${heroData.name}">${tr[heroData.name]}</h2>
+                            <p class="text-lg text-sky-400 mb-4" data-lang="${heroData.role}">${tr[heroData.role]}</p>
+                            <p class="text-sm italic text-gray-400 mb-6" data-lang="${heroData.motto}">"${tr[heroData.motto]}"</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 text-left mt-8">
+                        <div>
+                            <h4 class="font-bold text-lg text-white mb-2" data-lang="resp_title">${tr.resp_title}</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-1 pl-2" data-lang="${heroData.resp}">${tr[heroData.resp]}</ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-white mb-2" data-lang="rbac_title">${tr.rbac_title}</h4>
+                            <p class="text-gray-300 bg-gray-700/50 p-3 rounded-md" data-lang="${heroData.rbac}">${tr[heroData.rbac]}</p>
+                        </div>
+
+                        <details class="bg-amber-800/20 border border-amber-700/50 rounded-lg">
+                            <summary class="p-4 flex justify-between items-center">
+                                <span class="font-bold text-amber-300" data-lang="expert_title">${tr.expert_title}</span>
+                                <span class="summary-icon text-amber-300"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></span>
+                            </summary>
+                            <div class="p-4 pt-0 text-gray-300" data-lang="${heroData.expert}">${tr[heroData.expert]}</div>
+                        </details>
+                    </div>
+                `;
+                dossierModal.classList.remove('hidden');
+                dossierModal.classList.add('flex');
+            }
+
+            const closeDossier = () => {
+                dossierModal.classList.add('hidden');
+                dossierModal.classList.remove('flex');
+            }
+            dossierClose.addEventListener('click', closeDossier);
+            dossierBackdrop.addEventListener('click', closeDossier);
+            
+            setLanguage('pt');
+        });
+    </script>
+</body>
+</html>

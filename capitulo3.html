@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crônicas da Fortaleza Digital - As Runas de Proteção</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+            color: #e5e7eb;
+        }
+        .main-footer { color: #9ca3af; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .lang-flag { cursor: pointer; height: 1.5rem; transition: all 0.2s; border: 2px solid transparent; border-radius: 4px; }
+        .lang-flag:not(.active) { opacity: 0.5; }
+        .lang-flag.active { opacity: 1; border-color: #60A5FA; }
+        .lang-flag:hover { opacity: 1; transform: scale(1.1); }
+        
+        /* Tooltip Styles */
+        .tooltip-container { position: relative; display: inline-block; }
+        .tooltip-icon { cursor: pointer; }
+        .tooltip-text {
+            visibility: hidden; width: 220px; background-color: #1f2937; color: #fff; text-align: center;
+            border-radius: 6px; padding: 8px; position: absolute; z-index: 10; bottom: 125%; left: 50%;
+            margin-left: -110px; opacity: 0; transition: opacity 0.3s; border: 1px solid #4b5563;
+        }
+        .tooltip-text::after {
+            content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px;
+            border-width: 5px; border-style: solid; border-color: #4b5563 transparent transparent transparent;
+        }
+        .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+        /* Accordion Styles */
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details .summary-icon { transition: transform 0.3s ease; }
+        details[open] .summary-icon { transform: rotate(135deg); }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <!-- Header -->
+    <header class="bg-gray-800/80 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div>
+                 <a href="index.html" class="text-sm text-sky-400 hover:text-sky-300" data-lang="backToJourney">← Voltar para a Jornada</a>
+            </div>
+            <div id="language-switcher-flags" class="flex items-center space-x-2">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" title="Português" alt="Bandeira do Brasil" class="lang-flag active" data-lang-set="pt">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" title="English" alt="Bandeira dos EUA" class="lang-flag" data-lang-set="en">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" title="Español" alt="Bandeira da Espanha" class="lang-flag" data-lang-set="es">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Chapter Banner -->
+        <section class="relative h-[60vh] flex items-center justify-center text-center text-white p-4">
+             <div class="absolute inset-0 bg-black/60 z-10"></div>
+             <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_io97omio97omio97.png" class="absolute inset-0 w-full h-full object-cover" alt="Um mestre artesão inscrevendo runas brilhantes em uma pedra fundamental">
+             <div class="relative z-20">
+                <h1 class="text-4xl md:text-6xl font-black" data-lang="chapter3Title" style="text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);">Capítulo 3: As Runas de Proteção</h1>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-200" data-lang="chapter3Intro" style="text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);">
+                    A comitiva está reunida e o mapa, decifrado. Agora, a tarefa recai sobre o Mestre Artífice. É na Forja das Runas que a estratégia se torna defesa, onde palavras e intenções são gravadas em pedra para formar as barreiras mágicas que protegerão nosso reino.
+                </p>
+             </div>
+        </section>
+
+        <!-- Section 1: The Master Artificer's Forge -->
+        <section class="py-16 sm:py-24">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <h2 class="text-3xl font-bold text-center text-sky-300 mb-12" data-lang="section1Title">A Forja do Mestre Artífice</h2>
+                
+                <div class="space-y-16">
+                    <!-- 2.1 Market Runes -->
+                    <div class="md:flex gap-8 items-center bg-gray-800/20 p-8 rounded-xl border border-gray-700/50">
+                        <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_t875rct875rct875.png" alt="Uma coleção de pedras rúnicas com logos de aplicações" class="w-full md:w-1/3 rounded-lg shadow-lg mb-6 md:mb-0">
+                        <div class="md:w-2/3">
+                            <h3 class="text-2xl font-bold text-white" data-lang="subSection1Title">As Runas de Mercado</h3>
+                            <p class="text-gray-400 mt-2" data-lang="subSection1Desc">Para os desafios mais comuns do reino, os antigos já mapearam as soluções. Estas runas, testadas em batalha, oferecem proteção rápida e confiável para aplicações conhecidas.</p>
+                             <details class="mt-4 text-sm">
+                                <summary class="font-semibold text-amber-300 cursor-pointer" data-lang="expertTitle">Visão do Mestre</summary>
+                                <p class="mt-2 text-gray-300" data-lang="expert1Desc">A verdadeira força destas runas não está apenas na velocidade, mas na sabedoria coletiva que carregam. Usar um template para DNS, por exemplo, não só implementa as portas corretas (53/TCP, 53/UDP), mas o faz de uma forma que previne ataques de envenenamento de cache. É a aplicação das melhores práticas do reino com um único encantamento, economizando tempo e eliminando erros comuns de configuração.</p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 2.2 Forbidden Scrolls -->
+                    <div class="md:flex gap-8 items-center bg-gray-800/20 p-8 rounded-xl border border-gray-700/50">
+                        <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_887yci887yci887y.png" alt="Pergaminhos antigos selados e presos em uma parede" class="w-full md:w-1/3 rounded-lg shadow-lg mb-6 md:mb-0">
+                        <div class="md:w-2/3">
+                            <h3 class="text-2xl font-bold text-white" data-lang="subSection2Title">Os Pergaminhos Proibidos</h3>
+                            <p class="text-gray-400 mt-2" data-lang="subSection2Desc">Nas profundezas da fortaleza, guardamos os pergaminhos que contêm o conhecimento para combater as magias mais sombrias. Cada um descreve uma praga (ransomware) e o contra-feitiço para neutralizá-la.</p>
+                             <details class="mt-4 text-sm">
+                                <summary class="font-semibold text-amber-300 cursor-pointer" data-lang="expertTitle">Visão do Mestre</summary>
+                                <p class="mt-2 text-gray-300" data-lang="expert2Desc">Estes não são feitiços de bloqueio genéricos. Um pergaminho contra 'PrintNightmare' não bloqueia toda a impressão, mas sim a tática específica de exploração remota via Spooler. A magia está na precisão: neutralizar o método exato de movimento lateral do inimigo sem paralisar as operações legítimas do reino. É uma abordagem cirúrgica, em vez de uma muralha bruta.</p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 2.3 Anvil of Creation -->
+                    <div class="md:flex gap-8 items-center bg-gray-800/20 p-8 rounded-xl border border-gray-700/50">
+                        <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_ty6r72ty6r72ty6r.png" alt="Uma bigorna de pedra com uma runa em branco brilhante" class="w-full md:w-1/3 rounded-lg shadow-lg mb-6 md:mb-0">
+                        <div class="md:w-2/3">
+                            <h3 class="text-2xl font-bold text-white" data-lang="subSection3Title">A Bigorna da Criação (#diy)</h3>
+                            <p class="text-gray-400 mt-2" data-lang="subSection3Desc">Mas nem todos os desafios estão nos tomos antigos. Para as ameaças novas e para proteger as joias únicas do nosso reino, um verdadeiro Mestre Artífice deve forjar suas próprias runas. Este é o trabalho que exige a maior habilidade, conhecimento e a colaboração de toda a comitiva.</p>
+                            <details class="mt-4 text-sm">
+                                <summary class="font-semibold text-amber-300 cursor-pointer" data-lang="expertTitle">Visão do Mestre</summary>
+                                <p class="mt-2 text-gray-300" data-lang="expert3Desc">A verdadeira arte está aqui. A bigorna é usada para criar políticas de "least privilege" para aplicações customizadas. O Mestre Artífice, em conselho com o Lorde do Ativo, deve mapear cada fluxo de comunicação legítimo e forjar uma política que permita apenas isso. É um processo iterativo, que começa com um "Círculo de Proteção" amplo no modo de alerta e vai se fechando, como uma íris, até que apenas a luz necessária passe. Este é o pináculo da defesa sob medida.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+                 <div class="text-center mt-16">
+                    <a href="#ritual" class="inline-block bg-sky-500 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-sky-600 transition-transform hover:scale-105" data-lang="forgeButton">Levar à Forja →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Inscription Ritual -->
+        <section id="ritual" class="py-16 sm:py-24 bg-gray-900/50">
+             <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-3xl font-bold text-center text-sky-300 mb-12" data-lang="section2Title">O Ritual de Inscrição</h2>
+                
+                <div id="ritual-form">
+                    <div class="bg-gray-800 border border-gray-700 rounded-xl p-8 space-y-6">
+                        <div>
+                            <label for="citadel-name" class="block text-lg font-semibold mb-2" data-lang="step1">Passo 1: Nomeie a Cidadela</label>
+                            <input type="text" id="citadel-name" class="w-full bg-gray-700 border-gray-600 rounded-md p-3 focus:ring-2 focus:ring-sky-500" placeholder="Ex: Tesouraria Real">
+                        </div>
+                        <div>
+                            <h4 class="block text-lg font-semibold mb-2" data-lang="step3">Passo 2: Escolha os Encantamentos</h4>
+                            <div class="space-y-4">
+                                <label class="flex items-center"><input type="checkbox" id="enchant1" class="h-5 w-5 rounded-md bg-gray-600 text-sky-500 focus:ring-sky-500"><span class="ml-3" data-lang="enchantment1">Incluir processos</span>
+                                    <span class="tooltip-container ml-2">
+                                        <span class="tooltip-icon text-gray-400">(?)</span>
+                                        <span class="tooltip-text" data-lang="tooltip1">Aumenta a precisão da runa, especificando qual magia (processo) pode cruzar a barreira. Essencial para defesas granulares.</span>
+                                    </span>
+                                </label>
+                                <label class="flex items-center"><input type="checkbox" id="enchant2" class="h-5 w-5 rounded-md bg-gray-600 text-sky-500 focus:ring-sky-500"><span class="ml-3" data-lang="enchantment2">Ignorar fluxos já permitidos</span>
+                                     <span class="tooltip-container ml-2">
+                                        <span class="tooltip-icon text-gray-400">(?)</span>
+                                        <span class="tooltip-text" data-lang="tooltip2">Ensina a runa a ignorar rotas comerciais já sancionadas por outras leis, focando apenas em tráfego novo e desconhecido.</span>
+                                    </span>
+                                </label>
+                                <label class="flex items-center"><input type="checkbox" id="enchant3" class="h-5 w-5 rounded-md bg-gray-600 text-sky-500 focus:ring-sky-500"><span class="ml-3" data-lang="enchantment3">Incluir regras individuais</span>
+                                     <span class="tooltip-container ml-2">
+                                        <span class="tooltip-icon text-gray-400">(?)</span>
+                                        <span class="tooltip-text" data-lang="tooltip3">Cria uma regra para cada viajante (IP), em vez de para vilas inteiras (sub-redes). Útil para alvos específicos, mas pode tornar o pergaminho da lei muito longo.</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="time-frame" class="block text-lg font-semibold mb-2" data-lang="step4">Passo 3: Defina o Período de Análise</label>
+                            <select id="time-frame" class="w-full bg-gray-700 border-gray-600 rounded-md p-3 focus:ring-2 focus:ring-sky-500">
+                                <option value="7" data-lang="time1">Últimos 7 dias</option>
+                                <option value="30" selected data-lang="time2">Últimos 30 dias</option>
+                                <option value="90" data-lang="time3">Último trimestre</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-4 pt-6">
+                            <button id="clear-forge-btn" class="w-full md:w-auto flex-1 bg-gray-600 text-white font-bold py-4 rounded-lg hover:bg-gray-500 transition" data-lang="clearForge">Limpar Forja</button>
+                            <button id="forge-policy-btn" class="w-full md:w-auto flex-1 bg-green-600 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-green-700 transition-transform hover:scale-105" data-lang="forgePolicy">Forjar Política e Revelar o Pergaminho</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ritual-result" class="hidden">
+                    <div class="bg-gray-800 border-2 border-dashed border-amber-400 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-center text-amber-300 mb-6" data-lang="resultTitle">O Pergaminho da Runa Forjada</h3>
+                        <div class="space-y-4 text-lg">
+                            <p><strong>Cidadela Protegida:</strong> <span id="result-citadel" class="text-sky-400"></span></p>
+                            <p><strong>Período de Análise:</strong> <span id="result-time" class="text-sky-400"></span></p>
+                            <p><strong>Encantamentos Ativados:</strong> <span id="result-enchants" class="text-sky-400"></span></p>
+                            <div class="border-t border-gray-600 pt-4 mt-4">
+                                <p class="font-bold" data-lang="expectedResult">Resultado Esperado:</p>
+                                <p id="result-narrative" class="text-gray-300"></p>
+                            </div>
+                        </div>
+                        <div class="text-center mt-8">
+                            <button id="forge-again-btn" class="w-full md:w-auto bg-sky-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-sky-700 transition" data-lang="forgeAgain">Forjar Outra Runa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Final Navigation -->
+        <section class="py-16 text-center">
+            <a href="capitulo4.html" class="inline-block bg-sky-500 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-sky-600 transition-transform hover:scale-105" data-lang="nextChapter">Próximo Marco: A Torre de Vigilância →</a>
+        </section>
+
+    </main>
+    
+    <footer class="main-footer text-center p-6 text-sm relative z-10">
+        <p data-lang="footerCredit">Criado por Edson Sousa</p>
+    </footer>
+
+    <script>
+        const translations = {
+            'pt': {
+                backToJourney: '← Voltar para a Jornada',
+                chapter3Title: 'Capítulo 3: As Runas de Proteção',
+                chapter3Intro: 'A comitiva está reunida e o mapa, decifrado. Agora, a tarefa recai sobre o Mestre Artífice. É na Forja das Runas que a estratégia se torna defesa, onde palavras e intenções são gravadas em pedra para formar as barreiras mágicas que protegerão nosso reino.',
+                section1Title: 'A Forja do Mestre Artífice',
+                subSection1Title: 'As Runas de Mercado',
+                subSection1Desc: 'Para os desafios mais comuns do reino, os antigos já mapearam as soluções. Estas runas, testadas em batalha, oferecem proteção rápida e confiável para aplicações conhecidas.',
+                expertTitle: 'Visão do Mestre',
+                expert1Desc: 'A verdadeira força destas runas não está apenas na velocidade, mas na sabedoria coletiva que carregam. Usar um template para DNS, por exemplo, não só implementa as portas corretas (53/TCP, 53/UDP), mas o faz de uma forma que previne ataques de envenenamento de cache. É a aplicação das melhores práticas do reino com um único encantamento, economizando tempo e eliminando erros comuns de configuração.',
+                subSection2Title: 'Os Pergaminhos Proibidos',
+                subSection2Desc: 'Nas profundezas da fortaleza, guardamos os pergaminhos que contêm o conhecimento para combater as magias mais sombrias. Cada um descreve uma praga (ransomware) e o contra-feitiço para neutralizá-la.',
+                expert2Desc: 'Estes não são feitiços de bloqueio genéricos. Um pergaminho contra \'PrintNightmare\' não bloqueia toda a impressão, mas sim a tática específica de exploração remota via Spooler. A magia está na precisão: neutralizar o método exato de movimento lateral do inimigo sem paralisar as operações legítimas do reino. É uma abordagem cirúrgica, em vez de uma muralha bruta.',
+                subSection3Title: 'A Bigorna da Criação (#diy)',
+                subSection3Desc: 'Mas nem todos os desafios estão nos tomos antigos. Para as ameaças novas e para proteger as joias únicas do nosso reino, um verdadeiro Mestre Artífice deve forjar suas próprias runas. Este é o trabalho que exige a maior habilidade, conhecimento e a colaboração de toda a comitiva.',
+                expert3Desc: 'A verdadeira arte está aqui. A bigorna é usada para criar políticas de "least privilege" para aplicações customizadas. O Mestre Artífice, em conselho com o Lorde do Ativo, deve mapear cada fluxo de comunicação legítimo e forjar uma política que permita apenas isso. É um processo iterativo, que começa com um "Círculo de Proteção" amplo no modo de alerta e vai se fechando, como uma íris, até que apenas a luz necessária passe. Este é o pináculo da defesa sob medida.',
+                forgeButton: 'Levar à Forja →',
+                section2Title: 'O Ritual de Inscrição',
+                step1: 'Passo 1: Nomeie a Cidadela',
+                step3: 'Passo 2: Escolha os Encantamentos',
+                step4: 'Passo 3: Defina o Período de Análise',
+                enchantment1: 'Incluir processos',
+                tooltip1: 'Aumenta a precisão da runa, especificando qual magia (processo) pode cruzar a barreira. Essencial para defesas granulares.',
+                enchantment2: 'Ignorar fluxos já permitidos',
+                tooltip2: 'Ensina a runa a ignorar rotas comerciais já sancionadas por outras leis, focando apenas em tráfego novo e desconhecido.',
+                enchantment3: 'Incluir regras individuais',
+                tooltip3: 'Cria uma regra para cada viajante (IP), em vez de para vilas inteiras (sub-redes). Útil para alvos específicos, mas pode tornar o pergaminho da lei muito longo.',
+                time1: 'Últimos 7 dias',
+                time2: 'Últimos 30 dias',
+                time3: 'Último trimestre',
+                clearForge: 'Limpar Forja',
+                forgePolicy: 'Forjar Política e Revelar o Pergaminho',
+                resultTitle: 'O Pergaminho da Runa Forjada',
+                expectedResult: 'Resultado Esperado:',
+                forgeAgain: 'Forjar Outra Runa',
+                nextChapter: 'Próximo Marco: A Torre de Vigilância →',
+                footerCredit: 'Criado por Edson Sousa',
+            },
+            'en': {
+                backToJourney: '← Back to the Journey',
+                chapter3Title: 'Chapter 3: The Runes of Protection',
+                chapter3Intro: 'The fellowship is assembled, and the map deciphered. Now, the task falls to the Master Artificer. It is in the Forge of Runes that strategy becomes defense, where words and intentions are carved into stone to form the magical barriers that will protect our realm.',
+                section1Title: 'The Master Artificer\'s Forge',
+                subSection1Title: 'The Market Runes',
+                subSection1Desc: 'For the most common challenges in the realm, the ancients have already mapped the solutions. These battle-tested runes offer swift and reliable protection for known applications.',
+                expertTitle: 'Master\'s Insight',
+                expert1Desc: 'The true strength of these runes lies not just in their speed, but in the collective wisdom they carry. Using a DNS template, for example, not only implements the correct ports (53/TCP, 53/UDP) but does so in a way that prevents cache poisoning attacks. It is the application of the realm\'s best practices with a single enchantment, saving time and eliminating common configuration errors.',
+                subSection2Title: 'The Forbidden Scrolls',
+                subSection2Desc: 'In the depths of the fortress, we keep the scrolls containing the knowledge to combat the darkest magics. Each describes a plague (ransomware) and the counter-spell to neutralize it.',
+                expert2Desc: 'These are not generic blocking spells. A scroll against \'PrintNightmare\' does not block all printing, but rather the specific tactic of remote exploitation via the Spooler. The magic is in the precision: neutralizing the enemy\'s exact method of lateral movement without paralyzing legitimate kingdom operations. It is a surgical approach, rather than a crude wall.',
+                subSection3Title: 'The Anvil of Creation (#diy)',
+                subSection3Desc: 'But not all challenges are in the ancient tomes. For new threats and to protect the unique jewels of our kingdom, a true Master Artificer must forge their own runes. This is the work that demands the greatest skill, knowledge, and the collaboration of the entire fellowship.',
+                expert3Desc: 'The true art lies here. The anvil is used to create "least privilege" policies for custom applications. The Master Artificer, in council with the Asset Lord, must map every legitimate communication flow and forge a policy that allows only that. It is an iterative process, starting with a broad "Circle of Protection" in alert mode and gradually closing, like an iris, until only the necessary light passes through. This is the pinnacle of bespoke defense.',
+                forgeButton: 'To the Forge →',
+                section2Title: 'The Inscription Ritual',
+                step1: 'Step 1: Name the Citadel',
+                step3: 'Step 2: Choose the Enchantments',
+                step4: 'Step 3: Define the Analysis Period',
+                enchantment1: 'Include processes',
+                tooltip1: 'Increases the rune\'s precision, specifying which magic (process) can cross the barrier. Essential for granular defenses.',
+                enchantment2: 'Ignore existing allowed flows',
+                tooltip2: 'Teaches the rune to ignore trade routes already sanctioned by other laws, focusing only on new and unknown traffic.',
+                enchantment3: 'Include individual rules',
+                tooltip3: 'Creates a rule for each traveler (IP), instead of for entire villages (subnets). Useful for specific targets, but can make the law scroll very long.',
+                time1: 'Last 7 days',
+                time2: 'Last 30 days',
+                time3: 'Last quarter',
+                clearForge: 'Clear Forge',
+                forgePolicy: 'Forge Policy & Reveal Scroll',
+                resultTitle: 'The Forged Rune Scroll',
+                expectedResult: 'Expected Outcome:',
+                forgeAgain: 'Forge Another Rune',
+                nextChapter: 'Next Milestone: The Watchtower →',
+                footerCredit: 'Created by Edson Sousa',
+            },
+            'es': {
+                backToJourney: '← Volver a la Jornada',
+                chapter3Title: 'Capítulo 3: Las Runas de Protección',
+                chapter3Intro: 'La comunidad está reunida y el mapa descifrado. Ahora, la tarea recae en el Maestro Artesano. Es en la Forja de las Runas donde la estrategia se convierte en defensa, donde las palabras e intenciones se graban en piedra para formar las barreras mágicas que protegerán nuestro reino.',
+                section1Title: 'La Forja del Maestro Artesano',
+                subSection1Title: 'Las Runas de Mercado',
+                subSection1Desc: 'Para los desafíos más comunes del reino, los antiguos ya han trazado las soluciones. Estas runas, probadas en batalla, ofrecen protección rápida y fiable para aplicaciones conocidas.',
+                expertTitle: 'Visión del Maestro',
+                expert1Desc: 'La verdadera fuerza de estas runas no reside solo en su velocidad, sino en la sabiduría colectiva que portan. Usar una plantilla para DNS, por ejemplo, no solo implementa los puertos correctos (53/TCP, 53/UDP), sino que lo hace de una manera que previene ataques de envenenamiento de caché. Es la aplicación de las mejores prácticas del reino con un único encantamiento, ahorrando tiempo y eliminando errores comunes de configuración.',
+                subSection2Title: 'Los Pergaminos Prohibidos',
+                subSection2Desc: 'En las profundidades de la fortaleza, guardamos los pergaminos que contienen el conocimiento para combatir las magias más oscuras. Cada uno describe una plaga (ransomware) y el contra-hechizo para neutralizarla.',
+                expert2Desc: 'Estos no son hechizos de bloqueo genéricos. Un pergamino contra \'PrintNightmare\' no bloquea toda la impresión, sino la táctica específica de explotación remota a través del Spooler. La magia está en la precisión: neutralizar el método exacto de movimiento lateral del enemigo sin paralizar las operaciones legítimas del reino. Es un enfoque quirúrgico, en lugar de una muralla tosca.',
+                subSection3Title: 'El Yunque de la Creación (#diy)',
+                subSection3Desc: 'Pero no todos los desafíos están en los tomos antiguos. Para las nuevas amenazas y para proteger las joyas únicas de nuestro reino, un verdadero Maestro Artesano debe forjar sus propias runas. Este es el trabajo que exige la mayor habilidad, conocimiento y la colaboración de toda la comunidad.',
+                expert3Desc: 'El verdadero arte reside aquí. El yunque se usa para crear políticas de "mínimo privilegio" para aplicaciones personalizadas. El Maestro Artesano, en consejo con el Señor del Activo, debe mapear cada flujo de comunicación legítimo y forjar una política que permita solo eso. Es un proceso iterativo, que comienza con un "Círculo de Protección" amplio en modo de alerta y se va cerrando, como un iris, hasta que solo pasa la luz necesaria. Este es el pináculo de la defensa a medida.',
+                forgeButton: 'Llevar a la Forja →',
+                section2Title: 'El Ritual de Inscripción',
+                step1: 'Paso 1: Nombra la Ciudadela',
+                step3: 'Paso 2: Elige los Encantamientos',
+                step4: 'Paso 3: Define el Período de Análisis',
+                enchantment1: 'Incluir procesos',
+                tooltip1: 'Aumenta la precisión de la runa, especificando qué magia (proceso) puede cruzar la barrera. Esencial para defensas granulares.',
+                enchantment2: 'Ignorar flujos ya permitidos',
+                tooltip2: 'Enseña a la runa a ignorar rutas comerciales ya sancionadas por otras leyes, centrándose solo en tráfico nuevo y desconocido.',
+                enchantment3: 'Incluir reglas individuales',
+                tooltip3: 'Crea una regla para cada viajero (IP), en lugar de para pueblos enteros (subredes). Útil para objetivos específicos, pero puede hacer que el pergamino de la ley sea muy largo.',
+                time1: 'Últimos 7 días',
+                time2: 'Últimos 30 días',
+                time3: 'Último trimestre',
+                clearForge: 'Limpiar Forja',
+                forgePolicy: 'Forjar Política y Revelar el Pergamino',
+                resultTitle: 'El Pergamino de la Runa Forjada',
+                expectedResult: 'Resultado Esperado:',
+                forgeAgain: 'Forjar Otra Runa',
+                nextChapter: 'Siguiente Hito: La Torre de Vigilancia →',
+                footerCredit: 'Creado por Edson Sousa',
+            }
+        };
+
+        const langFlags = document.querySelectorAll('.lang-flag');
+        
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            const tr = translations[lang] || translations['pt'];
+            if (!tr) return; 
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (tr[key]) el.innerHTML = tr[key];
+            });
+            langFlags.forEach(flag => {
+                flag.classList.toggle('active', flag.getAttribute('data-lang-set') === lang);
+                flag.classList.toggle('opacity-50', flag.getAttribute('data-lang-set') !== lang);
+            })
+        }
+        
+        langFlags.forEach(flag => {
+            flag.addEventListener('click', (e) => {
+                 setLanguage(e.target.getAttribute('data-lang-set'));
+            })
+        });
+
+        // Ritual Form Logic
+        const ritualForm = document.getElementById('ritual-form');
+        const ritualResult = document.getElementById('ritual-result');
+        const forgePolicyBtn = document.getElementById('forge-policy-btn');
+        const clearForgeBtn = document.getElementById('clear-forge-btn');
+        const forgeAgainBtn = document.getElementById('forge-again-btn');
+
+        const citadelName = document.getElementById('citadel-name');
+        const enchant1 = document.getElementById('enchant1');
+        const enchant2 = document.getElementById('enchant2');
+        const enchant3 = document.getElementById('enchant3');
+        const timeFrame = document.getElementById('time-frame');
+
+        forgePolicyBtn.addEventListener('click', () => {
+            // Read values
+            const name = citadelName.value || "Cidadela Sem Nome";
+            const time = timeFrame.options[timeFrame.selectedIndex].text;
+            const enchants = [];
+            if (enchant1.checked) enchants.push(document.querySelector('[data-lang="enchantment1"]').textContent);
+            if (enchant2.checked) enchants.push(document.querySelector('[data-lang="enchantment2"]').textContent);
+            if (enchant3.checked) enchants.push(document.querySelector('[data-lang="enchantment3"]').textContent);
+            
+            // Populate results
+            document.getElementById('result-citadel').textContent = name;
+            document.getElementById('result-time').textContent = time;
+            document.getElementById('result-enchants').textContent = enchants.length > 0 ? enchants.join(', ') : "Nenhum";
+            
+            let narrative = `A Runa forjada para a cidadela "${name}" usará a sabedoria dos últimos ${time} para sugerir suas defesas. `;
+            if (enchant1.checked) {
+                narrative += `Por ser encantada com "Incluir Processos", ela será extremamente precisa, diferenciando o tráfego legítimo do malicioso com base na magia que utilizam. `;
+            }
+            if(enchant2.checked) {
+                narrative += `O encantamento "Ignorar Fluxos Permitidos" a torna mais eficiente, focando sua energia apenas em novas rotas comerciais suspeitas. `;
+            }
+            if(!enchant3.checked) {
+                 narrative += `Ao não usar "Regras Individuais", a política será mais ampla e robusta, protegendo vilas inteiras em vez de viajantes solitários.`;
+            } else {
+                 narrative += `O uso de "Regras Individuais" garantirá um controle específico sobre cada viajante, mas exigirá uma vigilância mais atenta do pergaminho.`
+            }
+
+            document.getElementById('result-narrative').textContent = narrative;
+
+            // Switch views
+            ritualForm.classList.add('hidden');
+            ritualResult.classList.remove('hidden');
+        });
+
+        function resetForm() {
+            citadelName.value = '';
+            enchant1.checked = false;
+            enchant2.checked = false;
+            enchant3.checked = false;
+            timeFrame.value = "30";
+        }
+
+        clearForgeBtn.addEventListener('click', resetForm);
+
+        forgeAgainBtn.addEventListener('click', () => {
+            ritualResult.classList.add('hidden');
+            ritualForm.classList.remove('hidden');
+            resetForm();
+        });
+        
+        setLanguage('pt');
+    </script>
+</body>
+</html>

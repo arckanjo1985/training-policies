@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crônicas da Fortaleza Digital - O Mapa Estratégico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+            color: #e5e7eb;
+        }
+        .main-footer { color: #9ca3af; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .lang-flag { cursor: pointer; height: 1.5rem; transition: all 0.2s; border: 2px solid transparent; border-radius: 4px; }
+        .lang-flag:not(.active) { opacity: 0.5; }
+        .lang-flag.active { opacity: 1; border-color: #60A5FA; }
+        .lang-flag:hover { opacity: 1; transform: scale(1.1); }
+        
+        /* -- War Table Tabs -- */
+        .tab-button.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        /* -- Threat animation -- */
+        .threat-line {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #ef4444, transparent);
+            opacity: 0;
+            animation: shoot 4s linear infinite;
+        }
+        .threat-active .threat-line {
+             opacity: 1;
+        }
+        @keyframes shoot {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Accordion Styles */
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details .summary-icon { transition: transform 0.3s ease; }
+        details[open] .summary-icon { transform: rotate(135deg); }
+        
+        #threat-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        #threat-list.visible {
+            max-height: 500px; /* Adjust as needed */
+            opacity: 1;
+            margin-top: 1.5rem; /* 6 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <!-- Header -->
+    <header class="bg-gray-800/80 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div>
+                 <a href="index.html" class="text-sm text-sky-400 hover:text-sky-300" data-lang="backToJourney">← Voltar para a Jornada</a>
+            </div>
+            <div id="language-switcher-flags" class="flex items-center space-x-2">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" title="Português" alt="Bandeira do Brasil" class="lang-flag active" data-lang-set="pt">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" title="English" alt="Bandeira dos EUA" class="lang-flag" data-lang-set="en">
+                 <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" title="Español" alt="Bandeira da Espanha" class="lang-flag" data-lang-set="es">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Chapter Banner -->
+        <section class="relative h-[60vh] flex items-center justify-center text-center text-white p-4">
+             <div class="absolute inset-0 bg-black/60 z-10"></div>
+             <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_da6gnfda6gnfda6g.png" class="absolute inset-0 w-full h-full object-cover" alt="Mapa holográfico de uma rede digital em uma sala de comando escura">
+             <div class="relative z-20">
+                <h1 class="text-4xl md:text-6xl font-black" data-lang="chapter1Title" style="text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);">Capítulo 1: O Mapa Estratégico</h1>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-200" data-lang="chapter1Intro" style="text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);">
+                    Todo grande esforço de defesa começa com um plano, e todo plano começa com um mapa que revela os porquês, os perigos e os tesouros a serem protegidos.
+                </p>
+             </div>
+        </section>
+
+        <!-- Section 1: The Briefing Room (War Table) -->
+        <section class="py-16 sm:py-24">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <h2 class="text-3xl font-bold text-center text-sky-300 mb-12" data-lang="section1Title">A Sala de Briefing</h2>
+                <div class="w-full bg-gray-800/50 border border-gray-700 rounded-xl">
+                    <!-- Tabs -->
+                    <div class="border-b border-gray-700 flex">
+                        <button class="tab-button active flex-1 p-4 font-bold text-gray-300" data-tab="mission" data-lang="tab1">A Missão</button>
+                        <button class="tab-button flex-1 p-4 font-bold text-gray-300" data-tab="threat" data-lang="tab2">A Ameaça</button>
+                        <button class="tab-button flex-1 p-4 font-bold text-gray-300" data-tab="oath" data-lang="tab3">O Juramento</button>
+                    </div>
+                    <!-- Tab Content -->
+                    <div class="p-8">
+                        <!-- Mission Content -->
+                        <div id="mission-content" class="tab-content space-y-4">
+                            <details class="bg-gray-700/40 rounded-lg overflow-hidden">
+                                <summary class="p-4 flex justify-between items-center">
+                                    <strong data-lang="mission1Title">Decifrar o Processo</strong>
+                                    <span class="summary-icon text-sky-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></span>
+                                </summary>
+                                <div class="px-4 pb-4 text-gray-300" data-lang="mission1Desc">
+                                    A jornada de proteção é dividida em fases. Primeiro, o <strong>Modo de Aprendizado</strong>, onde nossos cartógrafos mapeiam cada fluxo e dependência para garantir visibilidade total. Em seguida, o <strong>Modo de Alerta</strong>, onde as políticas são testadas: as sentinelas soam o alarme para violações, mas sem impacto, permitindo um ajuste fino e seguro. Apenas com o mapa completo e as regras validadas, avançamos para o <strong>Modo de Bloqueio</strong>.
+                                </div>
+                            </details>
+                            <details class="bg-gray-700/40 rounded-lg overflow-hidden">
+                                <summary class="p-4 flex justify-between items-center">
+                                    <strong data-lang="mission2Title">Mapear a Comitiva</strong>
+                                    <span class="summary-icon text-sky-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></span>
+                                </summary>
+                                <div class="px-4 pb-4 text-gray-300" data-lang="mission2Desc">
+                                   A força da fortaleza reside na união de suas legiões. A <strong>Equipe de Segmentação</strong> desenha as muralhas, a <strong>Equipe de Operações</strong> as patrulha, o <strong>Suporte</strong> garante que os portões funcionem para os aliados, e os <strong>Donos da Aplicação</strong> (os nobres de cada cidadela) validam que as defesas não isolem seus domínios do resto do reino. A colaboração é a chave para uma defesa que seja, ao mesmo tempo, forte e funcional.
+                                </div>
+                            </details>
+                            <details class="bg-gray-700/40 rounded-lg overflow-hidden">
+                                <summary class="p-4 flex justify-between items-center">
+                                    <strong data-lang="mission3Title">Marcar a Trilha</strong>
+                                    <span class="summary-icon text-sky-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></span>
+                                </summary>
+                                <div class="px-4 pb-4 text-gray-300" data-lang="mission3Desc">
+                                    Cada passo para o bloqueio total é um waypoint crítico. É preciso <strong>revisar os alertas</strong> para entender o que seria bloqueado, <strong>validar as regras</strong> com os Donos da Aplicação para evitar interrupções, <strong>assegurar a cobertura</strong> total dos Guardiões (agentes) e seguir um <strong>processo de mudança</strong> formal. Pular um destes marcos é arriscar a estabilidade do reino em nome da pressa.
+                                </div>
+                            </details>
+                            <details class="bg-gray-700/40 rounded-lg overflow-hidden">
+                                <summary class="p-4 flex justify-between items-center">
+                                    <strong data-lang="mission4Title">Posicionar os Guardiões</strong>
+                                    <span class="summary-icon text-sky-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></span>
+                                </summary>
+                                <div class="px-4 pb-4 text-gray-300" data-lang="mission4Desc">
+                                   A implantação dos Guardiões de Pedra (agentes) deve ser metódica. Começamos em terras menos críticas, como desenvolvimento e homologação. O passo mais fundamental, no entanto, é a <strong>rotulagem (labeling)</strong>. Dar a cada Guardião e a cada cidadela as insígnias corretas (ambiente, aplicação, tier) é o que permite a criação de Runas de Proteção (políticas) poderosas e precisas. Sem rótulos, nossos Guardiões ficam cegos.
+                                </div>
+                            </details>
+                        </div>
+                        <!-- Threat Content -->
+                        <div id="threat-content" class="tab-content hidden">
+                            <div class="grid md:grid-cols-2 gap-8 items-center">
+                                <div class="relative rounded-lg overflow-hidden border border-gray-600" id="threat-visual">
+                                    <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_ufajksufajksufaj.png" alt="Ilustração de uma cidadela digital protegida por um escudo de energia" class="w-full h-full object-cover">
+                                    <!-- Threat lines will be injected here by JS -->
+                                </div>
+                                <div class="space-y-4">
+                                    <p data-lang="threatDesc">Sem as barreiras rúnicas do "Círculo de Proteção", invasores podem se mover livremente pelo reino. Uma única brecha em uma fronteira distante pode permitir que um ataque se espalhe como fogo, paralisando até as mais seguras cidadelas no coração do nosso domínio.</p>
+                                    <button id="reveal-threats-btn" class="w-full bg-red-600 text-white font-bold py-3 rounded-lg hover:bg-red-700 transition" data-lang="revealThreats">Revelar Ameaças</button>
+                                    <div id="threat-list">
+                                        <h4 class="font-bold text-red-300 mb-2 mt-6" data-lang="attackVectorsTitle">Vetores de Ataque Comuns:</h4>
+                                        <ul class="space-y-3 text-sm text-gray-300">
+                                            <li data-lang="attack1"></li>
+                                            <li data-lang="attack2"></li>
+                                            <li data-lang="attack3"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Oath Content -->
+                        <div id="oath-content" class="tab-content hidden">
+                            <div class="grid md:grid-cols-2 gap-8 items-center">
+                                 <img src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_ltjofnltjofnltjo.png" alt="Ilustração de um pergaminho antigo com selo de cera" class="w-full rounded-lg h-full object-cover">
+                                <p data-lang="oathDesc">Este mapa e suas estratégias são forjados a partir da experiência de incontáveis batalhas. No entanto, cada reino tem sua própria topografia, cultura e hierarquia. Para que a fortaleza seja impenetrável, cada comitiva deve adaptar estes ensinamentos à sua realidade, alinhando a defesa com seus objetivos de negócio e segurança.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: For Experts -->
+        <section class="py-16 sm:pt-4 sm:pb-24">
+             <div class="container mx-auto px-6 max-w-5xl">
+                <details class="bg-gray-800/30 border border-gray-700/50 rounded-lg">
+                    <summary class="p-6 flex justify-between items-center">
+                        <span class="font-bold text-xl text-amber-300" data-lang="expertTitle">Visão do Mestre: Estratégias Avançadas</span>
+                         <span class="summary-icon text-amber-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                         </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-300 space-y-4" data-lang="expertContent" style="background:rgba(0,0,0,0.2)">
+                       <p>Um Mestre de Guilda sabe que o mapa esconde mais do que revela. É preciso considerar as "terras compartilhadas" (servidores partilhados) onde diferentes aplicações coexistem. Uma defesa para uma aplicação pode inadvertidamente bloquear outra. Além disso, a "topografia sensível" (infraestruturas específicas como clusters ou mainframes) exige runas de proteção customizadas e uma abordagem ainda mais cuidadosa na implantação dos Guardiões.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+        
+        <!-- Final Navigation -->
+        <section class="py-16 text-center">
+            <a href="capitulo2.html" class="inline-block bg-sky-500 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-sky-600 transition-transform hover:scale-105" data-lang="nextChapter">Próximo Marco: Reunir a Comitiva →</a>
+        </section>
+
+    </main>
+    
+    <footer class="main-footer text-center p-6 text-sm relative z-10">
+        <p data-lang="footerCredit">Criado por Edson Sousa</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const translations = {
+                'pt': {
+                    backToJourney: '← Voltar para a Jornada',
+                    chapter1Title: 'Capítulo 1: O Mapa Estratégico',
+                    chapter1Intro: 'Todo grande esforço de defesa começa com um plano, e todo plano começa com um mapa que revela os porquês, os perigos e os tesouros a serem protegidos.',
+                    section1Title: 'A Sala de Briefing',
+                    tab1: 'A Missão', tab2: 'A Ameaça', tab3: 'O Juramento',
+                    mission1Title: 'Decifrar o Processo',
+                    mission1Desc: 'A jornada de proteção é dividida em fases. Primeiro, o <strong>Modo de Aprendizado</strong>, onde nossos cartógrafos mapeiam cada fluxo e dependência para garantir visibilidade total. Em seguida, o <strong>Modo de Alerta</strong>, onde as políticas são testadas: as sentinelas soam o alarme para violações, mas sem impacto, permitindo um ajuste fino e seguro. Apenas com o mapa completo e as regras validadas, avançamos para o <strong>Modo de Bloqueio</strong>.',
+                    mission2Title: 'Mapear a Comitiva',
+                    mission2Desc: 'A força da fortaleza reside na união de suas legiões. A <strong>Equipe de Segmentação</strong> desenha as muralhas, a <strong>Equipe de Operações</strong> as patrulha, o <strong>Suporte</strong> garante que os portões funcionem para os aliados, e os <strong>Donos da Aplicação</strong> (os nobres de cada cidadela) validam que as defesas não isolem seus domínios do resto do reino. A colaboração é a chave para uma defesa que seja, ao mesmo tempo, forte e funcional.',
+                    mission3Title: 'Marcar a Trilha',
+                    mission3Desc: 'Cada passo para o bloqueio total é um waypoint crítico. É preciso <strong>revisar os alertas</strong> para entender o que seria bloqueado, <strong>validar as regras</strong> com os Donos da Aplicação para evitar interrupções, <strong>assegurar a cobertura</strong> total dos Guardiões (agentes) e seguir um <strong>processo de mudança</strong> formal. Pular um destes marcos é arriscar a estabilidade do reino em nome da pressa.',
+                    mission4Title: 'Posicionar os Guardiões',
+                    mission4Desc: 'A implantação dos Guardiões de Pedra (agentes) deve ser metódica. Começamos em terras menos críticas, como desenvolvimento e homologação. O passo mais fundamental, no entanto, é a <strong>rotulagem (labeling)</strong>. Dar a cada Guardião e a cada cidadela as insígnias corretas (ambiente, aplicação, tier) é o que permite a criação de Runas de Proteção (políticas) poderosas e precisas. Sem rótulos, nossos Guardiões ficam cegos.',
+                    threatDesc: 'Sem as barreiras rúnicas do "Círculo de Proteção", invasores podem se mover livremente pelo reino. Uma única brecha em uma fronteira distante pode permitir que um ataque se espalhe como fogo, paralisando até as mais seguras cidadelas no coração do nosso domínio.',
+                    revealThreats: 'Revelar Ameaças',
+                    hideThreats: 'Ocultar Ameaças',
+                    oathDesc: 'Este mapa e suas estratégias são forjados a partir da experiência de incontáveis batalhas. No entanto, cada reino tem sua própria topografia, cultura e hierarquia. Para que a fortaleza seja impenetrável, cada comitiva deve adaptar estes ensinamentos à sua realidade, alinhando a defesa com seus objetivos de negócio e segurança.',
+                    attackVectorsTitle: 'Vetores de Ataque Comuns:',
+                    attack1: '<strong>Movimento Lateral:</strong> Um invasor usa um posto avançado menos importante como ponte para atacar a tesouraria real (o banco de dados).',
+                    attack2: '<strong>Praga de Ransomware:</strong> Uma maldição que entra por uma vila e se espalha como fogo, paralisando todos os castelos que consegue alcançar.',
+                    attack3: '<strong>Saque de Dados:</strong> A biblioteca principal é invadida, permitindo que ladrões acessem e roubem os pergaminhos secretos do arquivo real.',
+                    expertTitle: 'Visão do Mestre: Estratégias Avançadas',
+                    expertContent: '<p>Um Mestre de Guilda sabe que o mapa esconde mais do que revela. É preciso considerar as "terras compartilhadas" (servidores partilhados) onde diferentes aplicações coexistem. Uma defesa para uma aplicação pode inadvertidamente bloquear outra. Além disso, a "topografia sensível" (infraestruturas específicas como clusters ou mainframes) exige runas de proteção customizadas e uma abordagem ainda mais cuidadosa na implantação dos Guardiões.</p>',
+                    nextChapter: 'Próximo Marco: Reunir a Comitiva →',
+                    footerCredit: 'Criado por Edson Sousa'
+                },
+                'en': {
+                    // ... (English translations)
+                },
+                'es': {
+                    // ... (Spanish translations)
+                }
+            };
+
+            const langFlags = document.querySelectorAll('.lang-flag');
+            
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                const tr = translations[lang] || translations['pt'];
+                if (!tr) return;
+                document.querySelectorAll('[data-lang]').forEach(el => {
+                    const key = el.getAttribute('data-lang');
+                    if (tr[key]) el.innerHTML = tr[key];
+                });
+                langFlags.forEach(flag => {
+                    flag.classList.toggle('active', flag.getAttribute('data-lang-set') === lang);
+                    flag.classList.toggle('opacity-50', flag.getAttribute('data-lang-set') !== lang);
+                })
+            }
+            
+            langFlags.forEach(flag => {
+                flag.addEventListener('click', (e) => {
+                     setLanguage(e.target.getAttribute('data-lang-set'));
+                })
+            })
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const tab = button.dataset.tab;
+                    tabContents.forEach(content => {
+                        content.classList.toggle('hidden', content.id !== `${tab}-content`);
+                    });
+                });
+            });
+            
+            const revealBtn = document.getElementById('reveal-threats-btn');
+            const threatVisual = document.getElementById('threat-visual');
+            const threatList = document.getElementById('threat-list');
+
+            revealBtn.addEventListener('click', () => {
+                const isVisible = threatList.classList.contains('visible');
+                const currentLang = document.documentElement.lang.slice(0, 2) || 'pt';
+                const tr = translations[currentLang] || translations['pt'];
+
+                if (isVisible) {
+                    threatList.classList.remove('visible');
+                    threatVisual.classList.remove('threat-active');
+                    revealBtn.textContent = tr.revealThreats;
+                    const lines = threatVisual.querySelectorAll('.threat-line');
+                    lines.forEach(line => line.remove());
+                } else {
+                    threatVisual.classList.add('threat-active');
+                    for(let i=0; i<5; i++) {
+                        const line = document.createElement('div');
+                        line.className = 'threat-line';
+                        line.style.left = `${Math.random() * 100}%`;
+                        line.style.animationDelay = `${Math.random() * 2}s`;
+                        line.style.animationDuration = `${2 + Math.random() * 2}s`;
+                        threatVisual.appendChild(line);
+                    }
+                    threatList.classList.add('visible');
+                    revealBtn.textContent = tr.hideThreats;
+                }
+            });
+
+            setLanguage('pt');
+        });
+    </script>
+</body>
+</html>

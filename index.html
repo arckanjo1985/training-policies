@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crônicas da Fortaleza Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c111d;
+            color: #e5e7eb;
+        }
+        /* --- Main Journey Background --- */
+        #journey-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /* Corrected with your public GitHub raw link */
+            background-image: url('https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_j4haj3j4haj3j4ha.png');
+            background-size: cover;
+            background-position: center 100%; /* Start at the bottom */
+            z-index: -1;
+            transform: scale(1);
+            transition: background-position 0.1s linear, transform 0.1s linear;
+        }
+        /* --- Header --- */
+        .header {
+            background-color: rgba(12, 17, 29, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .lang-flag {
+            cursor: pointer;
+            width: 32px;
+            height: 24px;
+            border-radius: 4px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            filter: saturate(0.5);
+        }
+        .lang-flag:hover, .lang-flag.active {
+            border-color: #60A5FA; /* light blue */
+            transform: scale(1.1);
+            filter: saturate(1);
+        }
+        /* --- Hero Section --- */
+        .hero-section {
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 1rem;
+        }
+        /* Added text-shadow for better readability on complex background */
+        .hero-section h2, .hero-section p {
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* --- Storytelling Prologue Section --- */
+        .prologue-section {
+            padding: 8rem 1rem;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(12, 17, 29, 0) 0%, rgba(12, 17, 29, 0.95) 15%, rgba(12, 17, 29, 0.95) 85%, rgba(12, 17, 29, 0) 100%);
+        }
+        /* --- Journey Path Section --- */
+        .journey-path-container {
+            position: relative;
+            background: linear-gradient(to bottom, rgba(12, 17, 29, 0.95) 0%, rgba(12, 17, 29, 0.95) 90%, rgba(12, 17, 29, 0) 100%);
+            padding-top: 10vh;
+            padding-bottom: 20vh;
+        }
+        .journey-path {
+            position: relative;
+        }
+        /* The dotted line */
+        .journey-path::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 3px;
+            background-image: linear-gradient(to bottom, #4b5563 0%, #4b5563 50%, transparent 50%);
+            background-size: 100% 20px;
+        }
+        .milestone {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 16rem;
+            position: relative;
+        }
+        .milestone:last-of-type {
+            margin-bottom: 8rem; /* Reduced space for the last milestone */
+        }
+        .milestone-content { width: 50%; }
+        .milestone-visual { width: 50%; }
+        .milestone:nth-child(odd) .milestone-content { order: 1; text-align: right; }
+        .milestone:nth-child(odd) .milestone-visual { order: 2; }
+        .milestone:nth-child(even) .milestone-content { order: 2; text-align: left; }
+        .milestone:nth-child(even) .milestone-visual { order: 1; }
+
+        .milestone-card {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #374151;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .milestone-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .milestone-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            aspect-ratio: 16 / 10;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid #374151;
+            background-color: #000; /* Fallback color */
+        }
+
+        /* Improved Text Colors for Readability */
+        .chapter-tag {
+            font-weight: 600;
+        }
+        .chapter-desc {
+            color: #d1d5db; /* Lighter gray for descriptions */
+        }
+        .chapter-link {
+            font-weight: 600;
+            transition: letter-spacing 0.3s ease;
+        }
+        .chapter-link:hover {
+            letter-spacing: 0.5px;
+        }
+        
+        /* --- Epilogue Section --- */
+        .epilogue-section {
+            padding: 8rem 1rem 12rem;
+            text-align: center;
+            background: linear-gradient(to top, rgba(12, 17, 29, 1) 50%, rgba(12, 17, 29, 0.95) 100%);
+        }
+
+        /* --- Glossary and Fast-Path --- */
+        #glossary-toggle {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 50;
+            background-color: #0ea5e9; /* sky-500 */
+            color: white;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+            transition: transform 0.2s;
+        }
+        #glossary-toggle:hover {
+            transform: scale(1.1);
+        }
+        #glossary-modal {
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+        }
+        
+        /* --- Footer --- */
+        .main-footer {
+            color: #9ca3af; /* gray-400 */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .journey-path::before { left: 1rem; }
+            .milestone {
+                flex-direction: column;
+                margin-bottom: 8rem;
+             }
+            .milestone-content, .milestone-visual { width: 100%; text-align: left !important; order: 0 !important; }
+            .milestone-visual { order: 1 !important; }
+            .milestone-content { order: 2 !important; margin-top: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="journey-background"></div>
+
+    <header class="header sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="font-bold text-xl text-white" data-lang="title">Crônicas da Fortaleza Digital</h1>
+            <div id="language-switcher" class="flex items-center space-x-3">
+                <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" title="Português" alt="Bandeira do Brasil" class="lang-flag active" data-lang-set="pt">
+                <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" title="English" alt="Bandeira dos EUA" class="lang-flag" data-lang-set="en">
+                <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" title="Español" alt="Bandeira da Espanha" class="lang-flag" data-lang-set="es">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h2 class="text-4xl md:text-6xl font-black text-white mb-4" data-lang="heroTitle">Forjando a Fortaleza Digital</h2>
+            <p class="text-lg text-gray-300 max-w-2xl" data-lang="heroSubtitle">
+                Uma jornada interativa para dominar a arte da segmentação e blindar sua postura de segurança.
+            </p>
+            <a href="#journey-path-start" class="mt-8 text-sky-400 text-sm underline hover:text-sky-300 transition" data-lang="fastPath">Já conhece esta trilha? Avance para os capítulos.</a>
+        </section>
+
+        <!-- Prologue Section -->
+        <section class="prologue-section">
+            <div class="container mx-auto max-w-4xl">
+                <h3 class="text-3xl font-bold text-sky-300 mb-6" data-lang="prologueTitle">O Chamado para a Defesa</h3>
+                <p class="text-xl text-gray-300 leading-relaxed" data-lang="prologueText">
+                    Nosso reino digital é vasto e próspero, mas suas fronteiras estão abertas. Invasores invisíveis testam nossas defesas dia e noite, buscando uma única brecha para semear o caos. Proteger nossos ativos mais críticos não é mais uma opção, é um dever. Esta jornada não é apenas sobre construir muros, mas sobre forjar uma defesa inteligente, camada por camada. É o chamado para a comitiva que irá erguer a fortaleza da segmentação.
+                </p>
+            </div>
+        </section>
+
+
+        <div id="journey-path-start" class="journey-path-container">
+            <div class="container mx-auto px-6 journey-path">
+
+                <!-- Milestone 1 -->
+                <div class="milestone">
+                    <div class="milestone-content">
+                        <a href="capitulo1.html" class="milestone-card block">
+                            <span class="chapter-tag text-sky-400" data-lang="chapter1Tag">Capítulo 1</span>
+                            <h3 class="text-2xl font-bold text-white mt-2" data-lang="chapter1Title">O Mapa Estratégico</h3>
+                            <p class="chapter-desc mt-2" data-lang="chapter1Desc">Por que a jornada é necessária? Entenda os objetivos, os riscos e a estratégia de segmentação.</p>
+                            <div class="chapter-link text-sky-400 mt-6" data-lang="startChapter">Decifrar o Mapa →</div>
+                        </a>
+                    </div>
+                    <div class="milestone-visual">
+                         <img class="milestone-image" src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_da6gnfda6gnfda6g.png" alt="Mapa holográfico de uma rede digital em uma sala de comando escura">
+                    </div>
+                </div>
+
+                <!-- Milestone 2 -->
+                <div class="milestone">
+                     <div class="milestone-content">
+                        <a href="capitulo2.html" class="milestone-card block">
+                            <span class="chapter-tag text-sky-400" data-lang="chapter2Tag">Capítulo 2</span>
+                            <h3 class="text-2xl font-bold text-white mt-2" data-lang="chapter2Title">A Comitiva</h3>
+                            <p class="chapter-desc mt-2" data-lang="chapter2Desc">Nenhuma fortaleza é erguida por um só homem. Conheça as equipes e seus papéis cruciais na missão.</p>
+                             <div class="chapter-link text-sky-400 mt-6" data-lang="startChapter">Reunir as Tropas →</div>
+                        </a>
+                    </div>
+                    <div class="milestone-visual">
+                        <img class="milestone-image" src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_vb1ikuvb1ikuvb1i.png" alt="A comitiva reunida em volta de um mapa holográfico">
+                    </div>
+                </div>
+
+                <!-- Milestone 3 -->
+                 <div class="milestone">
+                    <div class="milestone-content">
+                        <a href="capitulo3.html" class="milestone-card block">
+                            <span class="chapter-tag text-sky-400" data-lang="chapter3Tag">Capítulo 3</span>
+                            <h3 class="text-2xl font-bold text-white mt-2" data-lang="chapter3Title">As Runas de Proteção</h3>
+                            <p class="chapter-desc mt-2" data-lang="chapter3Desc">Aprenda a forjar as políticas, as regras e os templates que formarão a base de nossa defesa.</p>
+                             <div class="chapter-link text-sky-400 mt-6" data-lang="startChapter">Forjar as Runas →</div>
+                        </a>
+                    </div>
+                    <div class="milestone-visual">
+                         <img class="milestone-image" src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_io97omio97omio97.png" alt="Um mestre artesão inscrevendo runas brilhantes em uma pedra fundamental">
+                    </div>
+                </div>
+                
+                <!-- Milestone 4 -->
+                <div class="milestone">
+                     <div class="milestone-content">
+                        <a href="capitulo4.html" class="milestone-card block">
+                            <span class="chapter-tag text-amber-400" data-lang="chapter4Tag">Capítulo 4 - Interativo</span>
+                            <h3 class="text-2xl font-bold text-white mt-2" data-lang="chapter4Title">A Torre de Vigilância</h3>
+                            <p class="chapter-desc mt-2" data-lang="chapter4Desc">Suba na torre de vigilância. Use o Orbe de Análise para filtrar logs e identificar anomalias.</p>
+                             <div class="chapter-link text-amber-400 mt-6" data-lang="startInteractiveChapter">Iniciar Análise →</div>
+                        </a>
+                    </div>
+                    <div class="milestone-visual">
+                        <img class="milestone-image" src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_9aa7nu9aa7nu9aa7.png" alt="Um guardião observando um orbe de cristal que mostra fluxos de dados">
+                    </div>
+                </div>
+
+                <!-- Milestone 5 -->
+                <div class="milestone">
+                    <div class="milestone-content">
+                        <a href="capitulo5.html" class="milestone-card block">
+                            <span class="chapter-tag text-red-400" data-lang="chapter5Tag">Capítulo 5</span>
+                            <h3 class="text-2xl font-bold text-white mt-2" data-lang="chapter5Title">Erguendo os Escudos</h3>
+                            <p class="chapter-desc mt-2" data-lang="chapter5Desc">O momento da verdade. Aprenda a transicionar do modo de alerta para o bloqueio e defender ativamente a fortaleza.</p>
+                             <div class="chapter-link text-red-400 mt-6" data-lang="startChapter">Ativar as Defesas →</div>
+                        </a>
+                    </div>
+                    <div class="milestone-visual">
+                         <img class="milestone-image" src="https://raw.githubusercontent.com/arckanjo1985/training-policies/main/Gemini_Generated_Image_l95gahl95gahl95g.png" alt="Um domo de energia azul protegendo uma fortaleza de ataques">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Epilogue Section -->
+        <section class="epilogue-section">
+            <div class="container mx-auto max-w-4xl">
+                <h3 class="text-3xl font-bold text-sky-300 mb-6" data-lang="epilogueTitle">A Vigília Eterna</h3>
+                <p class="text-xl text-gray-300 leading-relaxed" data-lang="epilogueText">
+                   A fortaleza foi erguida e nossas defesas estão ativas. A jornada até aqui foi um sucesso, mas a verdadeira vitória está na vigilância constante. O reino digital está sempre em mudança; novas ameaças surgem e novos ativos precisam de proteção. O trabalho de um guardião nunca termina. Revalide os processos, aprimore as regras e mantenha a sua fortaleza impenetrável. A vigília continua.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer text-center p-6 text-sm relative z-10">
+        <p data-lang="footerCredit">Criado por Edson Sousa</p>
+    </footer>
+
+    <!-- Glossary Button -->
+    <button id="glossary-toggle" title="Glossário do Reino">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+    </button>
+
+    <!-- Glossary Modal -->
+    <div id="glossary-modal" class="fixed inset-0 z-50 items-center justify-center hidden" >
+        <div id="glossary-backdrop" class="fixed inset-0"></div>
+        <div class="relative w-full max-w-2xl bg-gray-800 border border-gray-700 rounded-lg shadow-xl p-6 m-4">
+             <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-sky-300" data-lang="glossaryTitle">Glossário do Reino</h3>
+                <button id="glossary-close" class="text-gray-400 hover:text-white">
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <dl class="space-y-4">
+                <div>
+                    <dt class="font-bold text-lg text-white" data-lang="term1">Ring-fencing</dt>
+                    <dd class="mt-1 text-gray-300" data-lang="def1">O Círculo de Proteção. Uma barreira rúnica que isola nossas cidadelas mais preciosas, as joias da coroa ou ativos mais importantes, garantindo que apenas aliados possam entrar e sair.</dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-lg text-white" data-lang="term2">Agente</dt>
+                    <dd class="mt-1 text-gray-300" data-lang="def2">Os Guardiões de Pedra. Nossas sentinelas implantadas em cada canto do reino para observar e aplicar as leis da fortaleza.</dd>
+                </div>
+                 <div>
+                    <dt class="font-bold text-lg text-white" data-lang="term3">Política de Segurança</dt>
+                    <dd class="mt-1 text-gray-300" data-lang="def3">O Pergaminho das Runas. O conjunto de leis e encantamentos que define quem pode passar por nossos portões e o que eles podem fazer lá dentro.</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const translations = {
+                'pt': {
+                    title: 'Crônicas da Fortaleza Digital', heroTitle: 'Forjando a Fortaleza Digital', heroSubtitle: 'Uma jornada interativa para dominar a arte da segmentação e blindar sua postura de segurança.',
+                    fastPath: 'Já conhece esta trilha? Avance para os capítulos.',
+                    prologueTitle: 'O Chamado para a Defesa',
+                    prologueText: 'Nosso reino digital é vasto e próspero, mas suas fronteiras estão abertas. Invasores invisíveis testam nossas defesas dia e noite, buscando uma única brecha para semear o caos. Proteger nossos ativos mais críticos não é mais uma opção, é um dever. Esta jornada não é apenas sobre construir muros, mas sobre forjar uma defesa inteligente, camada por camada. É o chamado para a comitiva que irá erguer a fortaleza da segmentação.',
+                    chapter1Tag: 'Capítulo 1', chapter1Title: 'O Mapa Estratégico', chapter1Desc: 'Por que a jornada é necessária? Entenda os objetivos, os riscos e a estratégia de segmentação.', startChapter: 'Decifrar o Mapa →',
+                    chapter2Tag: 'Capítulo 2', chapter2Title: 'A Comitiva', chapter2Desc: 'Nenhuma fortaleza é erguida por um só homem. Conheça as equipes e seus papéis cruciais na missão.', startChapter: 'Reunir as Tropas →',
+                    chapter3Tag: 'Capítulo 3', chapter3Title: 'As Runas de Proteção', chapter3Desc: 'Aprenda a forjar as políticas, as regras e os templates que formarão a base de nossa defesa.', startChapter: 'Forjar as Runas →',
+                    chapter4Tag: 'Capítulo 4 - Interativo', chapter4Title: 'A Torre de Vigilância', chapter4Desc: 'Suba na torre de vigilância. Use o Orbe de Análise para filtrar logs e identificar anomalias.', startInteractiveChapter: 'Iniciar Análise →',
+                    chapter5Tag: 'Capítulo 5', chapter5Title: 'Erguendo os Escudos', chapter5Desc: 'O momento da verdade. Aprenda a transicionar do modo de alerta para o bloqueio e defender ativamente a fortaleza.', startChapter: 'Ativar as Defesas →',
+                    epilogueTitle: 'A Vigília Eterna',
+                    epilogueText: 'A fortaleza foi erguida e nossas defesas estão ativas. A jornada até aqui foi um sucesso, mas a verdadeira vitória está na vigilância constante. O reino digital está sempre em mudança; novas ameaças surgem e novos ativos precisam de proteção. O trabalho de um guardião nunca termina. Revalide os processos, aprimore as regras e mantenha a sua fortaleza impenetrável. A vigília continua.',
+                    glossaryTitle: 'Glossário do Reino', term1: 'Ring-fencing', def1: 'O Círculo de Proteção. Uma barreira rúnica que isola nossas cidadelas mais preciosas, as joias da coroa ou ativos mais importantes, garantindo que apenas aliados possam entrar e sair.', term2: 'Agente', def2: 'Os Guardiões de Pedra. Nossas sentinelas implantadas em cada canto do reino para observar e aplicar as leis da fortaleza.', term3: 'Política de Segurança', def3: 'O Pergaminho das Runas. O conjunto de leis e encantamentos que define quem pode passar por nossos portões e o que eles podem fazer lá dentro.',
+                    footerCredit: 'Criado por Edson Sousa'
+                },
+                'en': {
+                    title: 'Chronicles of the Digital Fortress', heroTitle: 'Forging the Digital Fortress', heroSubtitle: 'An interactive journey to master the art of segmentation and shield your security posture.',
+                    fastPath: 'Already know this path? Skip to the chapters.',
+                    prologueTitle: 'The Call to Defense',
+                    prologueText: 'Our digital kingdom is vast and prosperous, but its borders are open. Unseen invaders test our defenses day and night, seeking a single breach to sow chaos. Protecting our most critical assets is no longer an option, it is a duty. This journey is not just about building walls, but about forging an intelligent defense, layer by layer. It is the call for the fellowship that will raise the fortress of segmentation.',
+                    chapter1Tag: 'Chapter 1', chapter1Title: 'The Strategic Map', chapter1Desc: 'Why is the journey necessary? Understand the objectives, risks, and segmentation strategy.', startChapter: 'Decipher the Map →',
+                    chapter2Tag: 'Chapter 2', chapter2Title: 'The Fellowship', chapter2Desc: 'No fortress is built by one person alone. Meet the teams and their crucial roles in the mission.', startChapter: 'Gather the Troops →',
+                    chapter3Tag: 'Chapter 3', chapter3Title: 'The Runes of Protection', chapter3Desc: 'Learn to forge the policies, rules, and templates that will form the basis of our defense.', startChapter: 'Forge the Runes →',
+                    chapter4Tag: 'Chapter 4 - Interactive', chapter4Title: 'The Watchtower', chapter4Desc: 'Climb the watchtower. Use the Orb of Analysis to filter logs and identify anomalies.', startInteractiveChapter: 'Start Analysis →',
+                    chapter5Tag: 'Chapter 5', chapter5Title: 'Raising the Shields', chapter5Desc: 'The moment of truth. Learn to transition from alert mode to blocking and actively defend the fortress.', startChapter: 'Activate Defenses →',
+                    epilogueTitle: 'The Eternal Watch',
+                    epilogueText: 'The fortress has been raised, and our defenses are active. The journey to this point was a success, but true victory lies in constant vigilance. The digital realm is ever-changing; new threats emerge, and new assets require protection. A guardian\'s work is never done. Revalidate processes, refine rules, and keep your fortress impenetrable. The watch continues.',
+                    glossaryTitle: 'Glossary of the Realm', term1: 'Ring-fencing', def1: 'The Circle of Protection. A runic barrier that isolates our most precious citadels, the crown jewels or most important assets, ensuring only allies can enter and exit.', term2: 'Agent', def2: 'The Stone Guardians. Our sentinels deployed in every corner of the realm to observe and enforce the laws of the fortress.', term3: 'Security Policy', def3: 'The Scroll of Runes. The set of laws and enchantments that defines who can pass through our gates and what they can do inside.',
+                    footerCredit: 'Created by Edson Sousa'
+                },
+                'es': {
+                    title: 'Crónicas de la Fortaleza Digital', heroTitle: 'Forjando la Fortaleza Digital', heroSubtitle: 'Una jornada interactiva para dominar el arte de la segmentación y blindar tu postura de seguridad.',
+                    fastPath: '¿Ya conoces este camino? Salta a los capítulos.',
+                    prologueTitle: 'La Llamada a la Defensa',
+                    prologueText: 'Nuestro reino digital es vasto y próspero, pero sus fronteras están abiertas. Invasores invisibles ponen a prueba nuestras defensas día y noche, buscando una única brecha para sembrar el caos. Proteger nuestros activos más críticos ya no es una opción, es un deber. Este viaje no se trata solo de construir muros, sino de forjar una defensa inteligente, capa por capa. Es la llamada a la comunidad que levantará la fortaleza de la segmentación.',
+                    chapter1Tag: 'Capítulo 1', chapter1Title: 'El Mapa Estratégico', chapter1Desc: '¿Por qué es necesario el viaje? Comprende los objetivos, los riesgos y la estrategia de segmentación.', startChapter: 'Descifrar el Mapa →',
+                    chapter2Tag: 'Capítulo 2', chapter2Title: 'La Comunidad', chapter2Desc: 'Ninguna fortaleza se construye por una sola persona. Conoce a los equipos y sus roles cruciales en la misión.', startChapter: 'Reunir a las Tropas →',
+                    chapter3Tag: 'Capítulo 3', chapter3Title: 'Las Runas de Protección', chapter3Desc: 'Aprende a forjar las políticas, reglas y plantillas que formarán la base de nuestra defensa.', startChapter: 'Forjar las Runas →',
+                    chapter4Tag: 'Capítulo 4 - Interactivo', chapter4Title: 'La Torre de Vigilancia', chapter4Desc: 'Sube a la torre de vigilancia. Usa el Orbe de Análisis para filtrar registros e identificar anomalías.', startInteractiveChapter: 'Iniciar Análisis →',
+                    chapter5Tag: 'Capítulo 5', chapter5Title: 'Levantando los Escudos', chapter5Desc: 'El momento de la verdad. Aprende a pasar del modo de alerta al de bloqueo y a defender activamente la fortaleza.', startChapter: 'Activar las Defensas →',
+                    epilogueTitle: 'La Vigilia Eterna',
+                    epilogueText: 'La fortaleza ha sido erigida y nuestras defensas están activas. El viaje hasta este punto fue un éxito, pero la verdadera victoria reside en la vigilancia constante. El reino digital está siempre en cambio; surgen nuevas amenazas y nuevos activos requieren protección. El trabajo de un guardián nunca termina. Revalida los procesos, perfecciona las reglas y mantén tu fortaleza impenetrable. La vigilia continúa.',
+                    glossaryTitle: 'Glosario del Reino', term1: 'Ring-fencing', def1: 'El Círculo de Protección. Una barrera rúnica que aísla nuestras ciudadelas más preciadas, las joyas de la corona o activos más importantes, asegurando que solo los aliados puedan entrar y salir.', term2: 'Agente', def2: 'Los Guardianes de Piedra. Nuestros centinelas desplegados en cada rincón del reino para observar y hacer cumplir las leyes de la fortaleza.', term3: 'Política de Seguridad', def3: 'El Pergamino de las Runas. El conjunto de leyes y encantamientos que define quién puede pasar por nuestras puertas y qué pueden hacer dentro.',
+                    footerCredit: 'Creado por Edson Sousa'
+                }
+            };
+
+            const languageSwitcher = document.getElementById('language-switcher');
+            const flags = languageSwitcher.querySelectorAll('.lang-flag');
+            const journeyBackground = document.getElementById('journey-background');
+
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                const translation = translations[lang] || translations['pt'];
+                if(!translation) return;
+
+                document.querySelectorAll('[data-lang]').forEach(el => {
+                    const key = el.getAttribute('data-lang');
+                    if (translation[key]) el.innerHTML = translation[key];
+                });
+                flags.forEach(flag => {
+                    flag.classList.toggle('active', flag.getAttribute('data-lang-set') === lang);
+                });
+            }
+
+            languageSwitcher.addEventListener('click', (event) => {
+                const newLang = event.target.getAttribute('data-lang-set');
+                if (newLang) {
+                    setLanguage(newLang);
+                }
+            });
+
+            // Parallax Effect
+            window.addEventListener('scroll', () => {
+                const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (scrollableHeight > 0) {
+                    const scrollPercentage = (window.scrollY / scrollableHeight) * 100;
+                    const bgPosition = 100 - scrollPercentage;
+                    const scale = 1 + (scrollPercentage / 100) * 0.15;
+                    
+                    journeyBackground.style.backgroundPosition = `center ${bgPosition}%`;
+                    journeyBackground.style.transform = `scale(${scale})`;
+                }
+            });
+            
+            // Glossary Modal Logic
+            const glossaryToggle = document.getElementById('glossary-toggle');
+            const glossaryModal = document.getElementById('glossary-modal');
+            const glossaryClose = document.getElementById('glossary-close');
+            const glossaryBackdrop = document.getElementById('glossary-backdrop');
+
+            glossaryToggle.addEventListener('click', () => {
+                glossaryModal.classList.remove('hidden');
+                glossaryModal.classList.add('flex');
+            });
+
+            const closeModal = () => {
+                glossaryModal.classList.add('hidden');
+                glossaryModal.classList.remove('flex');
+            }
+
+            if(glossaryClose) glossaryClose.addEventListener('click', closeModal);
+            if(glossaryBackdrop) glossaryBackdrop.addEventListener('click', closeModal);
+            
+            setLanguage('pt');
+        });
+    </script>
+</body>
+</html>
